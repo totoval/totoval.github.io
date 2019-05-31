@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Totoval</title>
+    <link>https://totoval.com/</link>
+    <description>Recent content on Totoval</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 31 May 2019 16:38:44 +0800</lastBuildDate>
+    
+	<atom:link href="https://totoval.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/architecture/architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/architecture/architecture/</guid>
+      <description> Architecture </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/architecture/embedded_modules/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/architecture/embedded_modules/</guid>
+      <description> Embedded Modules </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/basics/controllers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/basics/controllers/</guid>
+      <description> Controllers </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/basics/error_handling/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/basics/error_handling/</guid>
+      <description> Error Handling </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/basics/logging/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/basics/logging/</guid>
+      <description> Logging </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/basics/middleware/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/basics/middleware/</guid>
+      <description> Middleware </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/basics/requests/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/basics/requests/</guid>
+      <description> Requests </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/basics/responses/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/basics/responses/</guid>
+      <description> Responses </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/basics/routing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/basics/routing/</guid>
+      <description> Routing </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/basics/validation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/basics/validation/</guid>
+      <description> Validation </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/basics/views/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/basics/views/</guid>
+      <description> Views </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/database/getting_started/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/database/getting_started/</guid>
+      <description> Getting Started </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/database/migrations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/database/migrations/</guid>
+      <description> Migrations </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/database/query_builder/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/database/query_builder/</guid>
+      <description> Query Builder </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/database/redis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/database/redis/</guid>
+      <description> Redis </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/deeper/artisan_console/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/deeper/artisan_console/</guid>
+      <description> Artisan Console </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/deeper/cache/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/deeper/cache/</guid>
+      <description> Cache </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/deeper/events/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/deeper/events/</guid>
+      <description> Events </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/deeper/helpers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/deeper/helpers/</guid>
+      <description> Helpers </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/deeper/jobs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/deeper/jobs/</guid>
+      <description> Jobs </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/deeper/scheduler/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/deeper/scheduler/</guid>
+      <description> Scheduler </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/getting_started/configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/getting_started/configuration/</guid>
+      <description> Configuration </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/getting_started/installation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/getting_started/installation/</guid>
+      <description> Installation </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/internal_types/bigfloat/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/internal_types/bigfloat/</guid>
+      <description> BigFloat </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/internal_types/bigint/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/internal_types/bigint/</guid>
+      <description> BigInt </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/introduction/release_notes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/introduction/release_notes/</guid>
+      <description>Release Notes Versioning Scheme Totoval&amp;rsquo;s versioning scheme maintains the following convention: paradigm.major.minior-hotfix-n. For now, Major framework release v1.x.x are released when totoval is ready for production use, while minio release my be released as often as new feature has been added. Minor releases should never contain breaking changes.
+When referencing the Totoval framework from your application, you should always use the version which Totoval is used. for example, Totoval&amp;rsquo;s version is v0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/orm/model_helpers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/orm/model_helpers/</guid>
+      <description> Model Helpers </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/orm/pagination/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/orm/pagination/</guid>
+      <description> Pagination </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/orm/query_builder/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/orm/query_builder/</guid>
+      <description> Query Builder </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/security/authentication/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/security/authentication/</guid>
+      <description> Authentication </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/security/email_verification/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/security/email_verification/</guid>
+      <description> Email Verification </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/security/encryption/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/security/encryption/</guid>
+      <description> Encryption </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/security/hashing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/security/hashing/</guid>
+      <description> Hashing </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/security/password_reset/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/security/password_reset/</guid>
+      <description> Password Reset </description>
+    </item>
+    
+  </channel>
+</rss>

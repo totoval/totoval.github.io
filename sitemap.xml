@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://totoval.com/docs/architecture/architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/architecture/embedded_modules/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/basics/controllers/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/basics/error_handling/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/basics/logging/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/basics/middleware/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/basics/requests/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/basics/responses/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/basics/routing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/basics/validation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/basics/views/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/database/getting_started/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/database/migrations/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/database/query_builder/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/database/redis/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/deeper/artisan_console/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/deeper/cache/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/deeper/events/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/deeper/helpers/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/deeper/jobs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/deeper/scheduler/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/getting_started/configuration/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/getting_started/installation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/internal_types/bigfloat/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/internal_types/bigint/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/introduction/release_notes/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/orm/model_helpers/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/orm/pagination/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/orm/query_builder/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/security/authentication/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/security/email_verification/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/security/encryption/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/security/hashing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/security/password_reset/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/</loc>
+    <lastmod>2019-05-31T16:38:44+08:00</lastmod>
+  </url>
+  
+</urlset>
