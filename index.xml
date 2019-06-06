@@ -215,7 +215,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://totoval.com/docs/getting_started/installation/</guid>
-      <description> Installation </description>
+      <description> Installation Server Requirements </description>
     </item>
     
     <item>
@@ -271,6 +271,15 @@ When referencing the Totoval framework from your application, you should always 
       
       <guid>https://totoval.com/docs/orm/query_builder/</guid>
       <description> Query Builder </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/others/infinity_user_affiliation_system/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/others/infinity_user_affiliation_system/</guid>
+      <description> Infinity User Affiliation System </description>
     </item>
     
     <item>
