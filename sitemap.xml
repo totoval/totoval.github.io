@@ -103,6 +103,10 @@
   </url>
   
   <url>
+    <loc>https://totoval.com/docs/introduction/introduction/</loc>
+  </url>
+  
+  <url>
     <loc>https://totoval.com/docs/introduction/release_notes/</loc>
   </url>
   
@@ -116,6 +120,10 @@
   
   <url>
     <loc>https://totoval.com/docs/orm/query_builder/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/others/biu/</loc>
   </url>
   
   <url>
