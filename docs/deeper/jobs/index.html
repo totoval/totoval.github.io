@@ -174,6 +174,49 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown">
 
 <h1 id="jobs">Jobs</h1>
+
+<h2 id="queue-configuration">Queue Configuration</h2>
+
+<h3 id="nsq">nsq</h3>
+
+<p>example <strong>docker-compose.yaml</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">version: <span style="color:#e6db74">&#39;3&#39;</span>
+services:
+  nsqlookupd:
+    image: nsqio/nsq:v1.<span style="color:#ae81ff">1.0</span>
+    container_name: nsqlookupd
+    command: /nsqlookupd
+    expose:
+      - <span style="color:#e6db74">&#34;4160&#34;</span>
+      - <span style="color:#e6db74">&#34;4161&#34;</span>
+    ports:
+      - <span style="color:#e6db74">&#34;4161:4161&#34;</span>
+  nsqd:
+    image: nsqio/nsq:v1.<span style="color:#ae81ff">1.0</span>
+    container_name: nsqd
+    command: /nsqd --lookupd-tcp-address=nsqlookupd:<span style="color:#ae81ff">4160</span> --data-path=/data
+    volumes:
+      - <span style="color:#e6db74">&#34;/YOUR-DATA-PATH:/data&#34;</span>
+    depends_on:
+      - nsqlookupd
+    expose:
+      - <span style="color:#e6db74">&#34;4150&#34;</span>
+      - <span style="color:#e6db74">&#34;4151&#34;</span>
+    ports:
+      - <span style="color:#e6db74">&#34;4150:4150&#34;</span>
+  nsqadmin:
+    image: nsqio/nsq:v1.<span style="color:#ae81ff">1.0</span>
+    container_name: nsqadmin
+    command: /nsqadmin --lookupd-http-address=nsqlookupd:<span style="color:#ae81ff">4161</span>
+    depends_on:
+      - nsqlookupd  
+    expose:
+      - <span style="color:#e6db74">&#34;4171&#34;</span>
+    ports:
+      - <span style="color:#e6db74">&#34;4171:4171&#34;</span></code></pre></div>
+<blockquote>
+<p><strong>Attention</strong>: Need to change the nsqd volume <code>YOUR-DATA-PATH</code> field to your own.</p>
+</blockquote>
 </article>
 
       
@@ -199,7 +242,13 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#jobs">Jobs</a></li>
+<li><a href="#jobs">Jobs</a>
+<ul>
+<li><a href="#queue-configuration">Queue Configuration</a>
+<ul>
+<li><a href="#nsq">nsq</a></li>
+</ul></li>
+</ul></li>
 </ul>
 </nav>
   </aside>
