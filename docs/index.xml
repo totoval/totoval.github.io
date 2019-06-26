@@ -302,6 +302,17 @@ When referencing the Totoval framework from your application, you should always 
     
     <item>
       <title></title>
+      <link>https://totoval.com/docs/others/sentry/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/others/sentry/</guid>
+      <description> Sentry Introduction Sentry is an open-source error tracking system that helps developers monitor and fix crashes in real time. Iterate continuously. Boost efficiency. Improve user experience.
+Configuration To enable, add these json below to .env.json
+&amp;#34;SENTRY_ENABLE&amp;#34;: true, &amp;#34;SENTRY_HOST&amp;#34;: &amp;#34;YOUR-SENTRY-HOST&amp;#34;, &amp;#34;SENTRY_KEY&amp;#34;: &amp;#34;YOUR-SENTRY-KEY&amp;#34;, &amp;#34;SENTRY_SECRET&amp;#34;: &amp;#34;YOUR-SENTRY-SECRET&amp;#34;, &amp;#34;SENTRY_PROJECT&amp;#34;: &amp;#34;YOUR-SENTRY-PROJECT&amp;#34;,</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://totoval.com/docs/security/authentication/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
