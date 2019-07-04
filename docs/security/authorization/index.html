@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  
+    
+    Authorization
+  
+ | Totoval</title>
+
+
+
+<link rel="stylesheet" href="/book.min.1be4cc9c6c56dd4e92ba7edb76b6d12c1c40adcdd5dd81ee91dfa8cbb98d8fba.css">
+
+
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" style="display: none" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://totoval.com/">Totoval</a>
+</h2>
+
+
+
+    
+  
+  
+  
+
+  <style>
+  nav ul a[href$="\2f docs\2fsecurity\2f authorization\2f "] {
+      color: #004ed0;
+  }
+  </style>
+
+<ul>
+<li><strong>Introduction</strong>
+
+<ul>
+<li><a href="/docs/introduction/introduction/">Introduction</a></li>
+<li><a href="/docs/introduction/release_notes/">Release Notes</a></li>
+<li><a href="https://totoval.com">Go Docs //TODO</a></li>
+</ul></li>
+<li><strong>Getting Started</strong>
+
+<ul>
+<li><a href="/docs/getting_started/installation/">Installation</a></li>
+<li><a href="/docs/getting_started/configuration/">Configuration</a></li>
+</ul></li>
+<li><strong>Architecture</strong>
+
+<ul>
+<li><a href="/docs/architecture/architecture/">Architecture</a></li>
+<li><a href="/docs/architecture/embedded_modules/">Embedded Modules</a></li>
+</ul></li>
+<li><strong>Basics</strong>
+
+<ul>
+<li><a href="/docs/basics/routing/">Routing</a></li>
+<li><a href="/docs/basics/middleware/">Middleware</a></li>
+<li><a href="/docs/basics/controllers/">Controllers</a></li>
+<li><a href="/docs/basics/requests/">Requests</a></li>
+<li><a href="/docs/basics/responses/">Responses</a></li>
+<li><a href="/docs/basics/validation/">Validation</a></li>
+<li><a href="/docs/basics/error_handling/">Error Handling</a></li>
+<li><a href="/docs/basics/logging/">Logging</a></li>
+</ul></li>
+<li><strong>Security</strong>
+
+<ul>
+<li><a href="/docs/security/authentication/">Authentication</a></li>
+<li><a href="/docs/security/email_verification/">Email Verification</a></li>
+<li><a href="/docs/security/encryption/">Encryption</a></li>
+<li><a href="/docs/security/hashing/">Hashing</a></li>
+<li><a href="/docs/security/password_reset/">Password Reset</a></li>
+</ul></li>
+<li><strong>Deeper</strong>
+
+<ul>
+<li><a href="/docs/deeper/artisan_console/">Artisan Console</a></li>
+<li><a href="/docs/deeper/cache/">Cache</a></li>
+<li><a href="/docs/deeper/events/">Events</a></li>
+<li><a href="/docs/deeper/jobs/">Jobs</a></li>
+<li><a href="/docs/deeper/helpers/">Helpers</a></li>
+<li><a href="/docs/deeper/scheduler/">Scheduler</a></li>
+</ul></li>
+<li><strong>Database</strong>
+
+<ul>
+<li><a href="/docs/database/getting_started/">Getting Started</a></li>
+<li><a href="/docs/database/query_builder/">Query Builder</a></li>
+<li><a href="/docs/database/migrations/">Migrations</a></li>
+<li><a href="/docs/database/redis/">Redis</a></li>
+</ul></li>
+<li><strong>ORM</strong>
+
+<ul>
+<li><a href="/docs/orm/model_helpers/">Model Helpers</a></li>
+<li><a href="/docs/orm/pagination/">Pagination</a></li>
+</ul></li>
+<li><strong>Internal Types</strong>
+
+<ul>
+<li><a href="/docs/internal_types/bigint/">BigInt</a></li>
+<li><a href="/docs/internal_types/bigfloat/">BigFloat</a></li>
+</ul></li>
+<li><strong>Other Features</strong>
+
+<ul>
+<li><a href="/docs/basics/views/">Views</a></li>
+<li><a href="/docs/others/infinity_user_affiliation_system/">Infinity User Affiliation System</a></li>
+<li><a href="/docs/others/biu/">Biu</a></li>
+<li><a href="/docs/others/sentry/">Sentry</a></li>
+</ul></li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+  
+<script>
+(function() {
+  var menu = document.querySelector('aside.book-menu nav')
+  addEventListener('beforeunload', function(event) {
+    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  });
+  menu.scrollTop = localStorage.getItem('menu.scrollTop')
+})()
+</script>
+
+
+
+    </aside>
+
+    <div class="book-page">
+      <header class="align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>
+  
+    
+    Authorization
+  
+</strong>
+</header>
+
+      
+<article class="markdown">
+
+<h1 id="authorization">Authorization</h1>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>In addition to providing authentication services out of the box, Totoval also provides a simple way to authorize user actions against a given resource.</p>
+
+<p>Think of policies like routes and controllers, Policies provide a simple interface which defined the resource that could or not be attached by user using which action. Such as a post should only be edited by its&rsquo; creator.</p>
+
+<h1 id="creating-polices">Creating Polices</h1>
+
+<p>Polices are structs that organize authorization logic around a particular model or resource. For example, if your application is a blog, you may have a <code>Post</code> model and a corresponding <code>PostPolicy</code> to authorize user actions such as creating or updating posts.</p>
+
+<p>Polices should implement the interface <code>Policier</code>, which is defined at <code>github.com/totoval/framework/policy/policy.go</code>.</p>
+
+<p>Here&rsquo;s an example of <code>PostPolicy</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">policies</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;strconv&#34;</span>
+
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/helpers/m&#34;</span>
+	<span style="color:#e6db74">&#34;totoval/app/models&#34;</span>
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/model&#34;</span>
+)
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">postPolicy</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">post</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">models</span>.<span style="color:#a6e22e">Post</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewPostPolicy</span>(<span style="color:#a6e22e">post</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">models</span>.<span style="color:#a6e22e">Post</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">postPolicy</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">postPolicy</span>{<span style="color:#a6e22e">post</span>: <span style="color:#a6e22e">post</span>}
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">pp</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">postPolicy</span>) <span style="color:#a6e22e">Before</span>() <span style="color:#f92672">*</span><span style="color:#66d9ef">bool</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">pp</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">postPolicy</span>) <span style="color:#a6e22e">Create</span>(<span style="color:#a6e22e">userIF</span> <span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">IUser</span>, <span style="color:#a6e22e">routeParamMap</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span> }
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">pp</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">postPolicy</span>) <span style="color:#a6e22e">Update</span>(<span style="color:#a6e22e">userIF</span> <span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">IUser</span>, <span style="color:#a6e22e">routeParamMap</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span>      {
+	<span style="color:#75715e">// get current user
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">currentUser</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">userIF</span>.<span style="color:#a6e22e">Value</span>().(<span style="color:#f92672">*</span><span style="color:#a6e22e">models</span>.<span style="color:#a6e22e">User</span>)
+
+	<span style="color:#75715e">// get current post
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">postIdStr</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">routeParamMap</span>[<span style="color:#e6db74">&#34;postId&#34;</span>] 
+	<span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">ok</span>{
+		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+	}
+	<span style="color:#a6e22e">currentPostIdUint</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">ParseUint</span>(<span style="color:#a6e22e">postIdStr</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">64</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span>{
+		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+	}
+	<span style="color:#a6e22e">currentPost</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">models</span>.<span style="color:#a6e22e">Post</span>{
+		<span style="color:#a6e22e">Id</span>: uint(<span style="color:#a6e22e">currentPostIdUint</span>),
+	}
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">H</span>().<span style="color:#a6e22e">First</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">currentPost</span>, <span style="color:#66d9ef">false</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+	}
+
+	<span style="color:#75715e">// user only can edit his own post
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">currentUser</span>.<span style="color:#a6e22e">Id</span> <span style="color:#f92672">==</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">currentPost</span>.<span style="color:#a6e22e">UserId</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">pp</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">postPolicy</span>) <span style="color:#a6e22e">Delete</span>(<span style="color:#a6e22e">userIF</span> <span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">IUser</span>, <span style="color:#a6e22e">routeParamMap</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span>      { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span> }
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">pp</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">postPolicy</span>) <span style="color:#a6e22e">ForceDelete</span>(<span style="color:#a6e22e">userIF</span> <span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">IUser</span>, <span style="color:#a6e22e">routeParamMap</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span> }
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">pp</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">postPolicy</span>) <span style="color:#a6e22e">View</span>(<span style="color:#a6e22e">userIF</span> <span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">IUser</span>, <span style="color:#a6e22e">routeParamMap</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span> }
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">pp</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">postPolicy</span>) <span style="color:#a6e22e">Restore</span>(<span style="color:#a6e22e">userIF</span> <span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">IUser</span>, <span style="color:#a6e22e">routeParamMap</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span> }</code></pre></div>
+<h1 id="authorizing-actions-using-policies">Authorizing Actions Using Policies</h1>
+
+<h2 id="authorizing-route">Authorizing Route</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">PostGroup</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">PostController</span> <span style="color:#a6e22e">controllers</span>.<span style="color:#a6e22e">Post</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">pg</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">PostGroup</span>) <span style="color:#a6e22e">Group</span>(<span style="color:#a6e22e">group</span> <span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">Grouper</span>) {
+    <span style="color:#a6e22e">group</span>.<span style="color:#a6e22e">PUT</span>(<span style="color:#e6db74">&#34;/post/:postId&#34;</span>, <span style="color:#a6e22e">pg</span>.<span style="color:#a6e22e">PostController</span>.<span style="color:#a6e22e">Edit</span>).<span style="color:#a6e22e">Can</span>(<span style="color:#a6e22e">policies</span>.<span style="color:#a6e22e">NewPostPolicy</span>(<span style="color:#66d9ef">nil</span>), <span style="color:#a6e22e">policy</span>.<span style="color:#a6e22e">ActionUpdate</span>)
+}</code></pre></div></article>
+
+      
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#authorization">Authorization</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#creating-polices">Creating Polices</a></li>
+<li><a href="#authorizing-actions-using-policies">Authorizing Actions Using Policies</a>
+<ul>
+<li><a href="#authorizing-route">Authorizing Route</a></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+  
+  
+  
+</body>
+
+</html>

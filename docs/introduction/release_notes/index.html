@@ -184,9 +184,185 @@ while minio release my be released as often as new feature has been added. Minor
 <strong>never</strong> contain breaking changes.</p>
 
 <p>When referencing the Totoval framework from your application, you should always use the version
-which Totoval is used. for example, Totoval&rsquo;s version is <code>v0.7.8</code>, Totoval framework&rsquo;s version
-should also be <code>v0.7.8</code>.</p>
+which Totoval is used. for example, Totoval&rsquo;s version is <code>v0.8.1</code>, Totoval framework&rsquo;s version
+should also be <code>v0.8.1</code>.</p>
 
+<h2 id="totoval-v0-8-x">Totoval v0.8.x</h2>
+
+<p>Totoval <code>v0.8.x</code> upgrades the framework&rsquo;s underlying Totoval components to the <code>v0.8.x</code> series.</p>
+
+<h3 id="compare">Compare</h3>
+
+<p><a href="https://github.com/totoval/totoval/compare/v0.7.11...v0.8.0#diff-57e6facd16b7a7d9e9b25513649387ffL31">https://github.com/totoval/totoval/compare/v0.7.11...v0.8.0#diff-57e6facd16b7a7d9e9b25513649387ffL31</a></p>
+
+<h3 id="migrate-to-v0-8-x">Migrate to v0.8.x</h3>
+
+<h4 id="1-configuration-config-auth-go">1. Configuration <code>config/auth.go</code></h4>
+
+<p><code>&gt;= v0.8.x</code> added:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">auth</span>[<span style="color:#e6db74">&#34;model_ptr&#34;</span>] = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">models</span>.<span style="color:#a6e22e">User</span>{} <span style="color:#f92672">//</span> <span style="color:#a6e22e">must</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">pointer</span></code></pre></div>
+<h4 id="2-bootstrap-bootstrap-app-go">2. Bootstrap <code>bootstrap/app.go</code></h4>
+
+<p><code>&gt;= v0.8.x</code> added:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">policy</span>.<span style="color:#a6e22e">Initialize</span>()</code></pre></div>
+<p>after <code>lang.Initialize()</code></p>
+
+<h4 id="3-routes">3. Routes</h4>
+
+<ul>
+<li><p><code>routes/provider.go</code><br />
+<code>&lt; v0.8.x</code> :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">...</span>
+<span style="color:#f92672">...</span>
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Register</span>(<span style="color:#a6e22e">router</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Engine</span>) {
+	<span style="color:#a6e22e">version</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">versions</span>.<span style="color:#a6e22e">V1</span>{<span style="color:#a6e22e">Prefix</span>: <span style="color:#e6db74">&#34;v1&#34;</span>}
+	<span style="color:#a6e22e">version</span>.<span style="color:#a6e22e">Register</span>(<span style="color:#a6e22e">router</span>)
+}
+<span style="color:#f92672">...</span>
+<span style="color:#f92672">...</span></code></pre></div>
+<p><code>&gt;= v0.8.x</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">...</span>
+<span style="color:#f92672">...</span>
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Register</span>(<span style="color:#a6e22e">router</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Engine</span>) {
+	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">Bind</span>()
+	<span style="color:#a6e22e">versions</span>.<span style="color:#a6e22e">NewV1</span>(<span style="color:#a6e22e">router</span>)
+}
+<span style="color:#f92672">...</span>
+<span style="color:#f92672">...</span></code></pre></div></li>
+
+<li><p><code>routes/versions/v1.go</code><br />
+<code>&lt; v0.8.x</code>:
+```go
+&hellip;
+&hellip;</p></li>
+</ul>
+
+<p>type V1 struct {
+	Prefix string
+}</p>
+
+<p>func (v1 *V1) Register(router *gin.Engine) {
+	version := router.Group(v1.Prefix)
+	{
+		v1.noAuth(version)
+		v1.auth(version)
+	}
+}</p>
+
+<p>func (v1 *V1) noAuth(group *gin.RouterGroup) {
+	noAuthGroup := group.Group(&ldquo;&rdquo;)</p>
+
+<p>	{
+		route.RegisterRouteGroup(&amp;groups.AuthGroup{}, noAuthGroup)
+		route.RegisterRouteGroup(&amp;groups.UserAffiliationGroup{}, noAuthGroup)
+	}
+}</p>
+
+<p>func (v1 *V1) auth(group *gin.RouterGroup) {
+	authGroup := group.Group(&ldquo;&rdquo;, middleware.AuthRequired())</p>
+
+<p>	{
+		route.RegisterRouteGroup(&amp;groups.UserGroup{}, authGroup)
+	}
+}</p>
+
+<pre><code>`&gt;= v0.8.x`:
+```go
+...
+...
+
+func NewV1(engine *gin.Engine) {
+	ver := route.NewVersion(engine, &quot;v1&quot;)
+
+	// auth routes
+	ver.Auth(&quot;&quot;, func(grp route.Grouper) {
+		grp.AddGroup(&quot;/user&quot;, &amp;groups.UserGroup{})
+	})
+
+	// no auth routes
+	ver.NoAuth(&quot;&quot;, func(grp route.Grouper) {
+		grp.AddGroup(&quot;&quot;, &amp;groups.AuthGroup{})
+		grp.AddGroup(&quot;/user-affiliation&quot;, &amp;groups.UserAffiliationGroup{})
+	})
+}
+</code></pre>
+
+<ul>
+<li><code>routes/groups/xxx.go</code>
+<code>&lt; v0.8.x</code> example:
+<code>go
+...
+...
+func (ag *AuthGroup) Register(group *gin.RouterGroup) {
+	newGroup := group.Group(&quot;&quot;)
+	{
+		newGroup.POST(&quot;/login&quot;, ag.LoginController.Login)
+		newGroup.POST(&quot;/register&quot;, ag.RegisterController.Register)
+	}
+}
+</code>
+<code>&gt;= v0.8.x</code> example:
+<code>go
+...
+...
+func (ag *AuthGroup) Group(group route.Grouper) {
+	group.POST(&quot;/login&quot;, ag.LoginController.Login)
+	group.POST(&quot;/register&quot;, ag.RegisterController.Register)
+}
+</code></li>
+</ul>
+
+<h4 id="4-controllers-app-http-controllers-xxx-go">4. Controllers  <code>app/http/controllers/xxx.go</code></h4>
+
+<p><code>&lt; v0.8.x</code> example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#f92672">*</span><span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Info</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+	<span style="color:#a6e22e">userID</span>, <span style="color:#a6e22e">isAbort</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">middleware</span>.<span style="color:#a6e22e">AuthClaimsID</span>(<span style="color:#a6e22e">c</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">isAbort</span> {
+		<span style="color:#66d9ef">return</span>
+	}
+	<span style="color:#a6e22e">user</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">models</span>.<span style="color:#a6e22e">User</span>{
+		<span style="color:#a6e22e">ID</span>: <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">userID</span>,
+	}
+
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">H</span>().<span style="color:#a6e22e">First</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">user</span>, <span style="color:#66d9ef">false</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusUnprocessableEntity</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>()})
+		<span style="color:#66d9ef">return</span>
+	}
+	<span style="color:#f92672">...</span>
+	<span style="color:#f92672">...</span>
+	<span style="color:#f92672">...</span>
+	<span style="color:#66d9ef">return</span>
+}</code></pre></div>
+<p><code>&gt;= v0.8.x</code> example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#f92672">*</span><span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Info</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Scan</span>(<span style="color:#a6e22e">c</span>) {
+            <span style="color:#66d9ef">return</span>
+        }
+        <span style="color:#a6e22e">user</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">User</span>().<span style="color:#a6e22e">Value</span>().(<span style="color:#f92672">*</span><span style="color:#a6e22e">models</span>.<span style="color:#a6e22e">User</span>)
+        <span style="color:#f92672">...</span>
+        <span style="color:#f92672">...</span>
+        <span style="color:#f92672">...</span>
+        
+        <span style="color:#66d9ef">return</span>
+}</code></pre></div>
+<h4 id="5-model-app-models-user-go-or-your-own-user-model">5. Model <code>app/models/user.go</code> or your own user model</h4>
+
+<p><code>&gt;= v0.8.x</code> added:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">...</span>
+<span style="color:#f92672">...</span>
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">user</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Scan</span>(<span style="color:#a6e22e">userId</span> <span style="color:#66d9ef">uint</span>) <span style="color:#66d9ef">error</span> {
+	<span style="color:#a6e22e">newUser</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{}
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">H</span>().<span style="color:#a6e22e">First</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">newUser</span>, <span style="color:#66d9ef">false</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+	}
+	<span style="color:#f92672">*</span><span style="color:#a6e22e">user</span> = <span style="color:#a6e22e">newUser</span>
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">user</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Value</span>() <span style="color:#66d9ef">interface</span>{} {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">user</span>
+}
+<span style="color:#f92672">...</span>
+<span style="color:#f92672">...</span></code></pre></div>
 <h2 id="totoval-v0-7-x">Totoval v0.7.x</h2>
 
 <p>Totoval <code>v0.7.x</code> upgrades the framework&rsquo;s underlying Totoval components to the <code>v0.7.x</code> series.</p>
@@ -201,8 +377,8 @@ should also be <code>v0.7.8</code>.</p>
   
   <div>
     
-    <a href="https://github.com/totoval/docs/commit/6e765168fdebf18ee686ab1485741a2f37c2888b" title='Last modified May 31, 2019 by Toby Yan' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> May 31, 2019
+    <a href="https://github.com/totoval/docs/commit/d425d6529a7d7315b0255f0e43f4d8d4bc839eae" title='Last modified Jun 26, 2019 by Toby Yan' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> Jun 26, 2019
     </a>
   </div>
   
@@ -222,6 +398,18 @@ should also be <code>v0.7.8</code>.</p>
 <li><a href="#release-notes">Release Notes</a>
 <ul>
 <li><a href="#versioning-scheme">Versioning Scheme</a></li>
+<li><a href="#totoval-v0-8-x">Totoval v0.8.x</a>
+<ul>
+<li><a href="#compare">Compare</a></li>
+<li><a href="#migrate-to-v0-8-x">Migrate to v0.8.x</a>
+<ul>
+<li><a href="#1-configuration-config-auth-go">1. Configuration <code>config/auth.go</code></a></li>
+<li><a href="#2-bootstrap-bootstrap-app-go">2. Bootstrap <code>bootstrap/app.go</code></a></li>
+<li><a href="#3-routes">3. Routes</a></li>
+<li><a href="#4-controllers-app-http-controllers-xxx-go">4. Controllers  <code>app/http/controllers/xxx.go</code></a></li>
+<li><a href="#5-model-app-models-user-go-or-your-own-user-model">5. Model <code>app/models/user.go</code> or your own user model</a></li>
+</ul></li>
+</ul></li>
 <li><a href="#totoval-v0-7-x">Totoval v0.7.x</a></li>
 <li><a href="#totoval-v0-6-x">Totoval v0.6.x</a></li>
 </ul></li>
