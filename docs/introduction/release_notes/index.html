@@ -211,13 +211,14 @@ should also be <code>v0.8.1</code>.</p>
 <h4 id="3-routes">3. Routes</h4>
 
 <ul>
-<li><p><code>routes/provider.go</code><br />
-<code>&lt; v0.8.x</code> :</p>
+<li><code>routes/provider.go</code><br />
+<code>&lt; v0.8.x</code> :<br /></li>
+</ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">...</span>
 <span style="color:#f92672">...</span>
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Register</span>(<span style="color:#a6e22e">router</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Engine</span>) {
 	<span style="color:#a6e22e">version</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">versions</span>.<span style="color:#a6e22e">V1</span>{<span style="color:#a6e22e">Prefix</span>: <span style="color:#e6db74">&#34;v1&#34;</span>}
-	<span style="color:#a6e22e">version</span>.<span style="color:#a6e22e">Register</span>(<span style="color:#a6e22e">router</span>)
+ 	<span style="color:#a6e22e">version</span>.<span style="color:#a6e22e">Register</span>(<span style="color:#a6e22e">router</span>)
 }
 <span style="color:#f92672">...</span>
 <span style="color:#f92672">...</span></code></pre></div>
@@ -226,92 +227,84 @@ should also be <code>v0.8.1</code>.</p>
 <span style="color:#f92672">...</span>
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Register</span>(<span style="color:#a6e22e">router</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Engine</span>) {
 	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">Bind</span>()
-	<span style="color:#a6e22e">versions</span>.<span style="color:#a6e22e">NewV1</span>(<span style="color:#a6e22e">router</span>)
+ 	<span style="color:#a6e22e">versions</span>.<span style="color:#a6e22e">NewV1</span>(<span style="color:#a6e22e">router</span>)
 }
 <span style="color:#f92672">...</span>
-<span style="color:#f92672">...</span></code></pre></div></li>
-
-<li><p><code>routes/versions/v1.go</code><br />
-<code>&lt; v0.8.x</code>:<br />
-```go
-&hellip;
-&hellip;
-type V1 struct {
-	Prefix string
-}</p></li>
-</ul>
-
-<p>func (v1 *V1) Register(router *gin.Engine) {
-	version := router.Group(v1.Prefix)
-	{
-		v1.noAuth(version)
-		v1.auth(version)
-	}
-}</p>
-
-<p>func (v1 *V1) noAuth(group *gin.RouterGroup) {
-	noAuthGroup := group.Group(&ldquo;&rdquo;)</p>
-
-<p>	{
-		route.RegisterRouteGroup(&amp;groups.AuthGroup{}, noAuthGroup)
-		route.RegisterRouteGroup(&amp;groups.UserAffiliationGroup{}, noAuthGroup)
-	}
-}</p>
-
-<p>func (v1 *V1) auth(group *gin.RouterGroup) {
-	authGroup := group.Group(&ldquo;&rdquo;, middleware.AuthRequired())</p>
-
-<p>	{
-		route.RegisterRouteGroup(&amp;groups.UserGroup{}, authGroup)
-	}
-}</p>
-
-<pre><code>`&gt;= v0.8.x`:  
-```go
-...
-...
-
-func NewV1(engine *gin.Engine) {
-	ver := route.NewVersion(engine, &quot;v1&quot;)
-
-	// auth routes
-	ver.Auth(&quot;&quot;, func(grp route.Grouper) {
-		grp.AddGroup(&quot;/user&quot;, &amp;groups.UserGroup{})
-	})
-
-	// no auth routes
-	ver.NoAuth(&quot;&quot;, func(grp route.Grouper) {
-		grp.AddGroup(&quot;&quot;, &amp;groups.AuthGroup{})
-		grp.AddGroup(&quot;/user-affiliation&quot;, &amp;groups.UserAffiliationGroup{})
-	})
-}
-</code></pre>
-
+<span style="color:#f92672">...</span></code></pre></div>
 <ul>
-<li><code>routes/groups/xxx.go</code>
-<code>&lt; v0.8.x</code> example:
-<code>go
-...
-...
-func (ag *AuthGroup) Register(group *gin.RouterGroup) {
-	newGroup := group.Group(&quot;&quot;)
-	{
-		newGroup.POST(&quot;/login&quot;, ag.LoginController.Login)
-		newGroup.POST(&quot;/register&quot;, ag.RegisterController.Register)
-	}
-}
-</code>
-<code>&gt;= v0.8.x</code> example:
-<code>go
-...
-...
-func (ag *AuthGroup) Group(group route.Grouper) {
-	group.POST(&quot;/login&quot;, ag.LoginController.Login)
-	group.POST(&quot;/register&quot;, ag.RegisterController.Register)
-}
-</code></li>
+<li><code>routes/versions/v1.go</code><br /></li>
 </ul>
 
+<p><code>&lt; v0.8.x</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">...</span>
+<span style="color:#f92672">...</span>
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">V1</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">Prefix</span> <span style="color:#66d9ef">string</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v1</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">V1</span>) <span style="color:#a6e22e">Register</span>(<span style="color:#a6e22e">router</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Engine</span>) {
+	<span style="color:#a6e22e">version</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">Group</span>(<span style="color:#a6e22e">v1</span>.<span style="color:#a6e22e">Prefix</span>)
+	{
+		<span style="color:#a6e22e">v1</span>.<span style="color:#a6e22e">noAuth</span>(<span style="color:#a6e22e">version</span>)
+		<span style="color:#a6e22e">v1</span>.<span style="color:#a6e22e">auth</span>(<span style="color:#a6e22e">version</span>)
+	}
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v1</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">V1</span>) <span style="color:#a6e22e">noAuth</span>(<span style="color:#a6e22e">group</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">RouterGroup</span>) {
+	<span style="color:#a6e22e">noAuthGroup</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">group</span>.<span style="color:#a6e22e">Group</span>(<span style="color:#e6db74">&#34;&#34;</span>)
+
+	{
+		<span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">RegisterRouteGroup</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">groups</span>.<span style="color:#a6e22e">AuthGroup</span>{}, <span style="color:#a6e22e">noAuthGroup</span>)
+		<span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">RegisterRouteGroup</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">groups</span>.<span style="color:#a6e22e">UserAffiliationGroup</span>{}, <span style="color:#a6e22e">noAuthGroup</span>)
+	}
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v1</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">V1</span>) <span style="color:#a6e22e">auth</span>(<span style="color:#a6e22e">group</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">RouterGroup</span>) {
+	<span style="color:#a6e22e">authGroup</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">group</span>.<span style="color:#a6e22e">Group</span>(<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#a6e22e">middleware</span>.<span style="color:#a6e22e">AuthRequired</span>())
+
+	{
+		<span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">RegisterRouteGroup</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">groups</span>.<span style="color:#a6e22e">UserGroup</span>{}, <span style="color:#a6e22e">authGroup</span>)
+	}
+}</code></pre></div>
+<p><code>&gt;= v0.8.x</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">...</span>
+<span style="color:#f92672">...</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewV1</span>(<span style="color:#a6e22e">engine</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Engine</span>) {
+	<span style="color:#a6e22e">ver</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">NewVersion</span>(<span style="color:#a6e22e">engine</span>, <span style="color:#e6db74">&#34;v1&#34;</span>)
+
+	<span style="color:#75715e">// auth routes
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">ver</span>.<span style="color:#a6e22e">Auth</span>(<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">grp</span> <span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">Grouper</span>) {
+		<span style="color:#a6e22e">grp</span>.<span style="color:#a6e22e">AddGroup</span>(<span style="color:#e6db74">&#34;/user&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">groups</span>.<span style="color:#a6e22e">UserGroup</span>{})
+	})
+
+	<span style="color:#75715e">// no auth routes
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">ver</span>.<span style="color:#a6e22e">NoAuth</span>(<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">grp</span> <span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">Grouper</span>) {
+		<span style="color:#a6e22e">grp</span>.<span style="color:#a6e22e">AddGroup</span>(<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">groups</span>.<span style="color:#a6e22e">AuthGroup</span>{})
+		<span style="color:#a6e22e">grp</span>.<span style="color:#a6e22e">AddGroup</span>(<span style="color:#e6db74">&#34;/user-affiliation&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">groups</span>.<span style="color:#a6e22e">UserAffiliationGroup</span>{})
+	})
+}</code></pre></div>
+<ul>
+<li><code>routes/groups/xxx.go</code></li>
+</ul>
+
+<p><code>&lt; v0.8.x</code> example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">...</span>
+<span style="color:#f92672">...</span>
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">ag</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">AuthGroup</span>) <span style="color:#a6e22e">Register</span>(<span style="color:#a6e22e">group</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">RouterGroup</span>) {
+	<span style="color:#a6e22e">newGroup</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">group</span>.<span style="color:#a6e22e">Group</span>(<span style="color:#e6db74">&#34;&#34;</span>)
+	{
+		<span style="color:#a6e22e">newGroup</span>.<span style="color:#a6e22e">POST</span>(<span style="color:#e6db74">&#34;/login&#34;</span>, <span style="color:#a6e22e">ag</span>.<span style="color:#a6e22e">LoginController</span>.<span style="color:#a6e22e">Login</span>)
+		<span style="color:#a6e22e">newGroup</span>.<span style="color:#a6e22e">POST</span>(<span style="color:#e6db74">&#34;/register&#34;</span>, <span style="color:#a6e22e">ag</span>.<span style="color:#a6e22e">RegisterController</span>.<span style="color:#a6e22e">Register</span>)
+	}
+}</code></pre></div>
+<p><code>&gt;= v0.8.x</code> example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">...</span>
+<span style="color:#f92672">...</span>
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">ag</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">AuthGroup</span>) <span style="color:#a6e22e">Group</span>(<span style="color:#a6e22e">group</span> <span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">Grouper</span>) {
+	<span style="color:#a6e22e">group</span>.<span style="color:#a6e22e">POST</span>(<span style="color:#e6db74">&#34;/login&#34;</span>, <span style="color:#a6e22e">ag</span>.<span style="color:#a6e22e">LoginController</span>.<span style="color:#a6e22e">Login</span>)
+	<span style="color:#a6e22e">group</span>.<span style="color:#a6e22e">POST</span>(<span style="color:#e6db74">&#34;/register&#34;</span>, <span style="color:#a6e22e">ag</span>.<span style="color:#a6e22e">RegisterController</span>.<span style="color:#a6e22e">Register</span>)
+}</code></pre></div>
 <h4 id="4-controllers-app-http-controllers-xxx-go">4. Controllers  <code>app/http/controllers/xxx.go</code></h4>
 
 <p><code>&lt; v0.8.x</code> example:</p>
@@ -377,7 +370,7 @@ func (ag *AuthGroup) Group(group route.Grouper) {
   
   <div>
     
-    <a href="https://github.com/totoval/docs/commit/0133b8844a8a1ced850fb39c031d80460419f1ef" title='Last modified Jul 4, 2019 by Toby Yan' target="_blank" rel="noopener">
+    <a href="https://github.com/totoval/docs/commit/f2c992389719913c6391fb8299f5245ef2066886" title='Last modified Jul 4, 2019 by Toby Yan' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" alt="Changed" /> Jul 4, 2019
     </a>
   </div>
