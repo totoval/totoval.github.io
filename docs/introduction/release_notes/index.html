@@ -232,15 +232,14 @@ should also be <code>v0.8.1</code>.</p>
 <span style="color:#f92672">...</span></code></pre></div></li>
 
 <li><p><code>routes/versions/v1.go</code><br />
-<code>&lt; v0.8.x</code>:
+<code>&lt; v0.8.x</code>:<br />
 ```go
 &hellip;
-&hellip;</p></li>
-</ul>
-
-<p>type V1 struct {
+&hellip;
+type V1 struct {
 	Prefix string
-}</p>
+}</p></li>
+</ul>
 
 <p>func (v1 *V1) Register(router *gin.Engine) {
 	version := router.Group(v1.Prefix)
@@ -267,7 +266,7 @@ should also be <code>v0.8.1</code>.</p>
 	}
 }</p>
 
-<pre><code>`&gt;= v0.8.x`:
+<pre><code>`&gt;= v0.8.x`:  
 ```go
 ...
 ...
