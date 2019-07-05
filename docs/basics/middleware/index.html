@@ -182,7 +182,40 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown">
 
 <h1 id="middleware">Middleware</h1>
-</article>
+
+<p>Middleware is also a <a href="/docs/basics/routing/">route handler</a>.<br />
+&gt; Middleware will proccess the request before controller, so it cannot be the last handler in a route.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">middleware</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/helpers/log&#34;</span>
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/logs&#34;</span>
+
+	<span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/helpers/zone&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Example</span>() <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">HandlerFunc</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+		<span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zone</span>.<span style="color:#a6e22e">Now</span>()
+
+		<span style="color:#75715e">// Set example variable
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;example&#34;</span>, <span style="color:#e6db74">&#34;12345&#34;</span>)
+
+		<span style="color:#75715e">// before request
+</span><span style="color:#75715e"></span>
+		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Next</span>()
+
+		<span style="color:#75715e">// after request
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">latency</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zone</span>.<span style="color:#a6e22e">Since</span>(<span style="color:#a6e22e">t</span>)
+		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Info</span>(<span style="color:#e6db74">&#34;latency&#34;</span>, <span style="color:#a6e22e">logs</span>.<span style="color:#a6e22e">Field</span>{<span style="color:#e6db74">&#34;latency&#34;</span>: <span style="color:#a6e22e">latency</span>})
+
+		<span style="color:#75715e">// access the status we are sending
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">status</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Writer</span>.<span style="color:#a6e22e">Status</span>()
+		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Info</span>(<span style="color:#e6db74">&#34;status&#34;</span>, <span style="color:#a6e22e">logs</span>.<span style="color:#a6e22e">Field</span>{<span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#a6e22e">status</span>})
+	}
+}</code></pre></div></article>
 
       
 <div class="book-footer justify-between">
