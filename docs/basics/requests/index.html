@@ -182,7 +182,28 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown">
 
 <h1 id="requests">Requests</h1>
-</article>
+
+<p>Requests is a place for placing the app&rsquo;s request validation struct.</p>
+
+<h2 id="requests-1">Requests</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">requests</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">UserLogin</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">Email</span>    <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;email&#34; binding:&#34;required,email&#34;`</span>
+	<span style="color:#a6e22e">Password</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;password&#34; binding:&#34;required,min=8,max=24&#34;`</span>
+}</code></pre></div>
+<h2 id="use-controller">Use Controller</h2>
+
+<p>All the controllers are embedded with <code>BaseController</code>, So there&rsquo;s a func called <code>Validate</code>, Using this func to validate the request with the Requests struct. The returned value <code>isAbort</code> is about that the validate status. if <code>isAbort</code> is <code>true</code>, simply write a <code>return</code> at the controller&rsquo;s handle function body. And the matched error message would returned correctly with the http status <code>422</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Validate</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>, <span style="color:#a6e22e">_validator</span> <span style="color:#66d9ef">interface</span>{}, <span style="color:#a6e22e">onlyFirstError</span> <span style="color:#66d9ef">bool</span>) (<span style="color:#a6e22e">isAbort</span> <span style="color:#66d9ef">bool</span>)</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">l</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Login</span>) <span style="color:#a6e22e">Login</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+	<span style="color:#75715e">// validate and assign requestData
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">requestData</span> <span style="color:#a6e22e">requests</span>.<span style="color:#a6e22e">UserLogin</span>
+	<span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">l</span>.<span style="color:#a6e22e">Validate</span>(<span style="color:#a6e22e">c</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">requestData</span>, <span style="color:#66d9ef">true</span>) {
+		<span style="color:#66d9ef">return</span>
+	}
+    <span style="color:#f92672">...</span>
+    <span style="color:#f92672">...</span>
+}</code></pre></div></article>
 
       
 <div class="book-footer justify-between">
@@ -207,7 +228,11 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#requests">Requests</a></li>
+<li><a href="#requests">Requests</a>
+<ul>
+<li><a href="#requests-1">Requests</a></li>
+<li><a href="#use-controller">Use Controller</a></li>
+</ul></li>
 </ul>
 </nav>
   </aside>

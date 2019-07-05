@@ -81,7 +81,8 @@ package controllers import ( &amp;#34;net/http&amp;#34; &amp;#34;github.com/gin-
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://totoval.com/docs/basics/requests/</guid>
-      <description> Requests </description>
+      <description>Requests Requests is a place for placing the app&amp;rsquo;s request validation struct.
+Requests package requests type UserLogin struct { Email string `json:&amp;#34;email&amp;#34; binding:&amp;#34;required,email&amp;#34;` Password string `json:&amp;#34;password&amp;#34; binding:&amp;#34;required,min=8,max=24&amp;#34;` } Use Controller All the controllers are embedded with BaseController, So there&amp;rsquo;s a func called Validate, Using this func to validate the request with the Requests struct. The returned value isAbort is about that the validate status. if isAbort is true, simply write a return at the controller&amp;rsquo;s handle function body.</description>
     </item>
     
     <item>
