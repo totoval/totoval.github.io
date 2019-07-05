@@ -222,6 +222,11 @@ https://github.com/alex-shpak/hugo-book
 	<span style="color:#75715e">// get current user
 </span><span style="color:#75715e"></span>	<span style="color:#a6e22e">currentUser</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">IUser</span>.<span style="color:#a6e22e">Value</span>().(<span style="color:#f92672">*</span><span style="color:#a6e22e">models</span>.<span style="color:#a6e22e">User</span>)
 
+	<span style="color:#75715e">// if use Authorize func, routeParamMap is nil
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">routeParamMap</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+	}
+
 	<span style="color:#75715e">// get current post
 </span><span style="color:#75715e"></span>	<span style="color:#a6e22e">postIdStr</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">routeParamMap</span>[<span style="color:#e6db74">&#34;postId&#34;</span>]
 	
@@ -272,8 +277,9 @@ https://github.com/alex-shpak/hugo-book
 </span><span style="color:#75715e"></span>    <span style="color:#f92672">...</span>
     
     <span style="color:#75715e">// Do Authorize
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">isAbort</span>, <span style="color:#a6e22e">user</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">l</span>.<span style="color:#a6e22e">Authorize</span>(<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">policies</span>.<span style="color:#a6e22e">NewPostPolicy</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">currentPost</span>), <span style="color:#a6e22e">policy</span>.<span style="color:#a6e22e">ActionView</span>)
-    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">isAbort</span>{
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">permit</span>, <span style="color:#a6e22e">user</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">l</span>.<span style="color:#a6e22e">Authorize</span>(<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">policies</span>.<span style="color:#a6e22e">NewPostPolicy</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">currentPost</span>), <span style="color:#a6e22e">policy</span>.<span style="color:#a6e22e">ActionView</span>)
+    <span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">permit</span>{
+        <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusForbidden</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#a6e22e">policy</span>.<span style="color:#a6e22e">UserNotPermitError</span>{}.<span style="color:#a6e22e">Error</span>()})
         <span style="color:#66d9ef">return</span>
     }
     <span style="color:#f92672">...</span>
