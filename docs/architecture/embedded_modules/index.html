@@ -97,6 +97,12 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/security/hashing/">Hashing</a></li>
 <li><a href="/docs/security/password_reset/">Password Reset</a></li>
 </ul></li>
+<li><strong>Frontend</strong>
+
+<ul>
+<li><a href="/docs/frontend/localization/">Localization</a></li>
+<li><a href="/docs/frontend/views/">Views</a></li>
+</ul></li>
 <li><strong>Deeper</strong>
 
 <ul>
@@ -118,6 +124,7 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>ORM</strong>
 
 <ul>
+<li><a href="/docs/orm/models/">Models</a></li>
 <li><a href="/docs/orm/model_helpers/">Model Helpers</a></li>
 <li><a href="/docs/orm/pagination/">Pagination</a></li>
 </ul></li>
@@ -130,7 +137,6 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>Other Features</strong>
 
 <ul>
-<li><a href="/docs/basics/views/">Views</a></li>
 <li><a href="/docs/others/infinity_user_affiliation_system/">Infinity User Affiliation System</a></li>
 <li><a href="/docs/others/biu/">Biu</a></li>
 <li><a href="/docs/others/sentry/">Sentry</a></li>
@@ -176,7 +182,66 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown">
 
 <h1 id="embedded-modules">Embedded Modules</h1>
-</article>
+
+<h2 id="totoval">Totoval</h2>
+
+<p>refers to (<a href="https://github.com/totoval/totoval/blob/master/go.mod)[https://github.com/totoval/totoval/blob/master/go.mod">https://github.com/totoval/totoval/blob/master/go.mod)[https://github.com/totoval/totoval/blob/master/go.mod</a>]</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">module</span> <span style="color:#a6e22e">totoval</span>
+
+<span style="color:#a6e22e">require</span> (
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gin</span><span style="color:#f92672">-</span><span style="color:#a6e22e">gonic</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gin</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.4.0</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">golang</span><span style="color:#f92672">/</span><span style="color:#a6e22e">protobuf</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.3.1</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">jinzhu</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gorm</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.9.2</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">totoval</span><span style="color:#f92672">/</span><span style="color:#a6e22e">framework</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.8.1</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hotfix</span><span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">urfave</span><span style="color:#f92672">/</span><span style="color:#a6e22e">cli</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.20.0</span>
+)</code></pre></div>
+<h2 id="framework">Framework</h2>
+
+<p>refers to <a href="https://github.com/totoval/framework/blob/master/go.mod">https://github.com/totoval/framework/blob/master/go.mod</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">module</span> <span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">totoval</span><span style="color:#f92672">/</span><span style="color:#a6e22e">framework</span>
+
+<span style="color:#a6e22e">require</span> (
+	<span style="color:#a6e22e">cloud</span>.<span style="color:#a6e22e">google</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#66d9ef">go</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.36.0</span> <span style="color:#75715e">// indirect
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">davecgh</span><span style="color:#f92672">/</span><span style="color:#66d9ef">go</span><span style="color:#f92672">-</span><span style="color:#a6e22e">spew</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.1.1</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">denisenkom</span><span style="color:#f92672">/</span><span style="color:#66d9ef">go</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mssqldb</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.0.0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">20190204142019</span><span style="color:#f92672">-</span><span style="color:#a6e22e">df6d76eb9289</span> <span style="color:#75715e">// indirect
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">erikstmartin</span><span style="color:#f92672">/</span><span style="color:#66d9ef">go</span><span style="color:#f92672">-</span><span style="color:#a6e22e">testdb</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.0.0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">20160219214506</span><span style="color:#f92672">-</span><span style="color:#ae81ff">8</span><span style="color:#a6e22e">d10e4a1bae5</span> <span style="color:#75715e">// indirect
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">fatih</span><span style="color:#f92672">/</span><span style="color:#a6e22e">color</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.7.0</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">getsentry</span><span style="color:#f92672">/</span><span style="color:#a6e22e">raven</span><span style="color:#f92672">-</span><span style="color:#66d9ef">go</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.2.0</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gin</span><span style="color:#f92672">-</span><span style="color:#a6e22e">contrib</span><span style="color:#f92672">/</span><span style="color:#a6e22e">sentry</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.0.0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">20190528141903</span><span style="color:#f92672">-</span><span style="color:#ae81ff">48</span><span style="color:#a6e22e">a399dfd39f</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gin</span><span style="color:#f92672">-</span><span style="color:#a6e22e">gonic</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gin</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.4.0</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#66d9ef">go</span><span style="color:#f92672">-</span><span style="color:#a6e22e">playground</span><span style="color:#f92672">/</span><span style="color:#a6e22e">locales</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.12.1</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#66d9ef">go</span><span style="color:#f92672">-</span><span style="color:#a6e22e">playground</span><span style="color:#f92672">/</span><span style="color:#a6e22e">universal</span><span style="color:#f92672">-</span><span style="color:#a6e22e">translator</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.16.0</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#66d9ef">go</span><span style="color:#f92672">-</span><span style="color:#a6e22e">redis</span><span style="color:#f92672">/</span><span style="color:#a6e22e">redis</span> <span style="color:#a6e22e">v6</span><span style="color:#ae81ff">.15.2</span><span style="color:#f92672">+</span><span style="color:#a6e22e">incompatible</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#66d9ef">go</span><span style="color:#f92672">-</span><span style="color:#a6e22e">sql</span><span style="color:#f92672">-</span><span style="color:#a6e22e">driver</span><span style="color:#f92672">/</span><span style="color:#a6e22e">mysql</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.4.1</span> <span style="color:#75715e">// indirect
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gofrs</span><span style="color:#f92672">/</span><span style="color:#a6e22e">uuid</span> <span style="color:#a6e22e">v3</span><span style="color:#ae81ff">.2.0</span><span style="color:#f92672">+</span><span style="color:#a6e22e">incompatible</span> <span style="color:#75715e">// indirect
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">golang</span><span style="color:#f92672">/</span><span style="color:#a6e22e">protobuf</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.3.1</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">golang</span><span style="color:#f92672">/</span><span style="color:#a6e22e">snappy</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.0.1</span> <span style="color:#75715e">// indirect
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">jinzhu</span><span style="color:#f92672">/</span><span style="color:#a6e22e">copier</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.0.0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">20180308034124</span><span style="color:#f92672">-</span><span style="color:#ae81ff">7e38</span><span style="color:#a6e22e">e58719c3</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">jinzhu</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gorm</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.9.2</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">jinzhu</span><span style="color:#f92672">/</span><span style="color:#a6e22e">inflection</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.0.0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">20180308033659</span><span style="color:#f92672">-</span><span style="color:#ae81ff">041403662</span><span style="color:#ae81ff">98</span><span style="color:#a6e22e">a</span> <span style="color:#75715e">// indirect
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">jinzhu</span><span style="color:#f92672">/</span><span style="color:#a6e22e">now</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.0.0</span> <span style="color:#75715e">// indirect
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">leodido</span><span style="color:#f92672">/</span><span style="color:#66d9ef">go</span><span style="color:#f92672">-</span><span style="color:#a6e22e">urn</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.1.0</span> <span style="color:#75715e">// indirect
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">lib</span><span style="color:#f92672">/</span><span style="color:#a6e22e">pq</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.0.0</span> <span style="color:#75715e">// indirect
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">mattn</span><span style="color:#f92672">/</span><span style="color:#66d9ef">go</span><span style="color:#f92672">-</span><span style="color:#a6e22e">colorable</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.0.9</span> <span style="color:#75715e">// indirect
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">mattn</span><span style="color:#f92672">/</span><span style="color:#66d9ef">go</span><span style="color:#f92672">-</span><span style="color:#a6e22e">sqlite3</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.10.0</span> <span style="color:#75715e">// indirect
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">nicksnyder</span><span style="color:#f92672">/</span><span style="color:#66d9ef">go</span><span style="color:#f92672">-</span><span style="color:#a6e22e">i18n</span><span style="color:#f92672">/</span><span style="color:#a6e22e">v2</span> <span style="color:#a6e22e">v2</span><span style="color:#ae81ff">.0.0</span><span style="color:#f92672">-</span><span style="color:#a6e22e">beta</span><span style="color:#ae81ff">.6</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">nsqio</span><span style="color:#f92672">/</span><span style="color:#66d9ef">go</span><span style="color:#f92672">-</span><span style="color:#a6e22e">nsq</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.0.7</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">onsi</span><span style="color:#f92672">/</span><span style="color:#a6e22e">ginkgo</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.8.0</span> <span style="color:#75715e">// indirect
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">onsi</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gomega</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.5.0</span> <span style="color:#75715e">// indirect
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">patrickmn</span><span style="color:#f92672">/</span><span style="color:#66d9ef">go</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cache</span> <span style="color:#a6e22e">v2</span><span style="color:#ae81ff">.1.0</span><span style="color:#f92672">+</span><span style="color:#a6e22e">incompatible</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">pkg</span><span style="color:#f92672">/</span><span style="color:#a6e22e">errors</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.8.0</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">robfig</span><span style="color:#f92672">/</span><span style="color:#a6e22e">cron</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.1.0</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">sirupsen</span><span style="color:#f92672">/</span><span style="color:#a6e22e">logrus</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.4.2</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">spf13</span><span style="color:#f92672">/</span><span style="color:#a6e22e">cast</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.3.0</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">spf13</span><span style="color:#f92672">/</span><span style="color:#a6e22e">viper</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.4.0</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">urfave</span><span style="color:#f92672">/</span><span style="color:#a6e22e">cli</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.20.0</span>
+	<span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">ztrue</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tracerr</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.3.0</span>
+	<span style="color:#a6e22e">golang</span>.<span style="color:#a6e22e">org</span><span style="color:#f92672">/</span><span style="color:#a6e22e">x</span><span style="color:#f92672">/</span><span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.0.0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">20190308221718</span><span style="color:#f92672">-</span><span style="color:#a6e22e">c2843e01d9a2</span>
+	<span style="color:#a6e22e">golang</span>.<span style="color:#a6e22e">org</span><span style="color:#f92672">/</span><span style="color:#a6e22e">x</span><span style="color:#f92672">/</span><span style="color:#a6e22e">text</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.3.1</span><span style="color:#f92672">-</span><span style="color:#ae81ff">0.20180807135948</span><span style="color:#f92672">-</span><span style="color:#ae81ff">17</span><span style="color:#a6e22e">ff2d5776d2</span>
+	<span style="color:#a6e22e">google</span>.<span style="color:#a6e22e">golang</span>.<span style="color:#a6e22e">org</span><span style="color:#f92672">/</span><span style="color:#a6e22e">appengine</span> <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.4.0</span> <span style="color:#75715e">// indirect
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">gopkg</span>.<span style="color:#a6e22e">in</span><span style="color:#f92672">/</span><span style="color:#a6e22e">dgrijalva</span><span style="color:#f92672">/</span><span style="color:#a6e22e">jwt</span><span style="color:#f92672">-</span><span style="color:#66d9ef">go</span>.<span style="color:#a6e22e">v3</span> <span style="color:#a6e22e">v3</span><span style="color:#ae81ff">.2.0</span>
+	<span style="color:#a6e22e">gopkg</span>.<span style="color:#a6e22e">in</span><span style="color:#f92672">/</span><span style="color:#66d9ef">go</span><span style="color:#f92672">-</span><span style="color:#a6e22e">playground</span><span style="color:#f92672">/</span><span style="color:#a6e22e">validator</span>.<span style="color:#a6e22e">v9</span> <span style="color:#a6e22e">v9</span><span style="color:#ae81ff">.27.0</span>
+)</code></pre></div></article>
 
       
 <div class="book-footer justify-between">
@@ -201,7 +266,11 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#embedded-modules">Embedded Modules</a></li>
+<li><a href="#embedded-modules">Embedded Modules</a>
+<ul>
+<li><a href="#totoval">Totoval</a></li>
+<li><a href="#framework">Framework</a></li>
+</ul></li>
 </ul>
 </nav>
   </aside>

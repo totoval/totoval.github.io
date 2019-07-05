@@ -17,17 +17,11 @@
       
       <guid>https://totoval.com/docs/architecture/architecture/</guid>
       <description>Architecture Totoval has two separated parts, Totoval repo and Totoval Framework repo.
-Totoval Totoval repo is the main repo which defines the directory mapping of Totoval. It has 8 parts currently. * app
-The app is a directory which contains all the component that your project will use. * http
-* controllers * models
-* cache
-* jobs
-* events
-* listeners
-* notifications
-* policies
-* console
-* bootstrap</description>
+Totoval Totoval repo is the main repo which defines the directory mapping of Totoval. It has 7 parts currently.
+ app
+The app is a directory which contains all the component that your project will use.  http
+ controllers middleware requests  models cache jobs events listeners policies console  commands
+ schedule   bootstrap</description>
     </item>
     
     <item>
@@ -36,7 +30,9 @@ The app is a directory which contains all the component that your project will u
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://totoval.com/docs/architecture/embedded_modules/</guid>
-      <description> Embedded Modules </description>
+      <description>Embedded Modules Totoval refers to (https://github.com/totoval/totoval/blob/master/go.mod)[https://github.com/totoval/totoval/blob/master/go.mod]
+module totoval require ( github.com/gin-gonic/gin v1.4.0 github.com/golang/protobuf v1.3.1 github.com/jinzhu/gorm v1.9.2 github.com/totoval/framework v0.8.1-hotfix-2 github.com/urfave/cli v1.20.0 ) Framework refers to https://github.com/totoval/framework/blob/master/go.mod
+module github.com/totoval/framework require ( cloud.google.com/go v0.36.0 // indirect 	github.com/davecgh/go-spew v1.1.1 github.com/denisenkom/go-mssqldb v0.0.0-20190204142019-df6d76eb9289 // indirect 	github.com/erikstmartin/go-testdb v0.0.0-20160219214506-8d10e4a1bae5 // indirect 	github.com/fatih/color v1.7.0 github.com/getsentry/raven-go v0.2.0 github.com/gin-contrib/sentry v0.0.0-20190528141903-48a399dfd39f github.com/gin-gonic/gin v1.4.0 github.com/go-playground/locales v0.12.1 github.com/go-playground/universal-translator v0.16.0 github.com/go-redis/redis v6.15.2+incompatible github.com/go-sql-driver/mysql v1.4.1 // indirect 	github.com/gofrs/uuid v3.2.0+incompatible // indirect 	github.</description>
     </item>
     
     <item>
@@ -109,15 +105,6 @@ The app is a directory which contains all the component that your project will u
       
       <guid>https://totoval.com/docs/basics/validation/</guid>
       <description> Validation </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://totoval.com/docs/basics/views/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://totoval.com/docs/basics/views/</guid>
-      <description> Views </description>
     </item>
     
     <item>
@@ -213,12 +200,33 @@ version: &amp;#39;3&amp;#39; services: nsqlookupd: image: nsqio/nsq:v1.1.0 conta
     
     <item>
       <title></title>
+      <link>https://totoval.com/docs/frontend/localization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/frontend/localization/</guid>
+      <description> Localization </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/frontend/views/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/frontend/views/</guid>
+      <description> Views </description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://totoval.com/docs/getting_started/configuration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://totoval.com/docs/getting_started/configuration/</guid>
-      <description> Configuration Configure  Use default env file sh mv .env.example.json .env.json  Startup your mysql instance if you don&amp;rsquo;t have
-Here&amp;rsquo;s a docker example: sh docker run --name mysql --rm -it -p \&amp;quot;3306:3306\&amp;quot; -v \&amp;quot;${HOME}/{YOUR-MYSQL-PERSISTENCE-DATA-PATH}/mysql:/var/lib/mysql\&amp;quot; -e \&amp;quot;MYSQL_ROOT_PASSWORD={YOUR-MYSQL-ROOT-PASSWORD}\&amp;quot; mysql:latest  Start your truck! sh go run main.go   </description>
+      <description> Configuration Minimal Configuration  Use default env file
+mv .env.example.json .env.json Startup your mysql instance if you don&amp;rsquo;t have
+Here&amp;rsquo;s a docker example:
+docker run --name mysql --rm -it \  -p \&amp;#34;3306:3306\&amp;#34; \  -v \&amp;#34;${HOME}/{YOUR-MYSQL-PERSISTENCE-DATA-PATH}/mysql:/var/lib/mysql\&amp;#34; \  -e \&amp;#34;MYSQL_ROOT_PASSWORD={YOUR-MYSQL-ROOT-PASSWORD}\&amp;#34; \  mysql:latest Let&amp;rsquo;s start your truck!
+go run main.go  Environment Configuration Environment File Configuration Accessing Configuration Values </description>
     </item>
     
     <item>
@@ -227,7 +235,9 @@ Here&amp;rsquo;s a docker example: sh docker run --name mysql --rm -it -p \&amp;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://totoval.com/docs/getting_started/installation/</guid>
-      <description> Installation Server Requirements  System: linux, macos, windows, arm&amp;hellip; Cpu: 1 Memory: 128MB Disk: 100MB  Install  Download sh git clone git@github.com:totoval/totoval.git ./YOUR-PROJECT-NAME  Remove .git and reinit it sh cd ./YOUR-PROJECT-NAME rm -rf .git git init   </description>
+      <description> Installation Server Requirements  System: linux, macos, windows, arm&amp;hellip; Cpu: 1 Memory: 128MB Disk: 100MB  Install  Download
+git clone git@github.com:totoval/totoval.git ./YOUR-PROJECT-NAME Remove .git and reinit it
+cd ./YOUR-PROJECT-NAME rm -rf .git git init  </description>
     </item>
     
     <item>
@@ -274,6 +284,15 @@ When referencing the Totoval framework from your application, you should always 
       
       <guid>https://totoval.com/docs/orm/model_helpers/</guid>
       <description> Model Helpers </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://totoval.com/docs/orm/models/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/orm/models/</guid>
+      <description> Models </description>
     </item>
     
     <item>

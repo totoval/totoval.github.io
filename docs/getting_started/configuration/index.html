@@ -97,6 +97,12 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/security/hashing/">Hashing</a></li>
 <li><a href="/docs/security/password_reset/">Password Reset</a></li>
 </ul></li>
+<li><strong>Frontend</strong>
+
+<ul>
+<li><a href="/docs/frontend/localization/">Localization</a></li>
+<li><a href="/docs/frontend/views/">Views</a></li>
+</ul></li>
 <li><strong>Deeper</strong>
 
 <ul>
@@ -118,6 +124,7 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>ORM</strong>
 
 <ul>
+<li><a href="/docs/orm/models/">Models</a></li>
 <li><a href="/docs/orm/model_helpers/">Model Helpers</a></li>
 <li><a href="/docs/orm/pagination/">Pagination</a></li>
 </ul></li>
@@ -130,7 +137,6 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>Other Features</strong>
 
 <ul>
-<li><a href="/docs/basics/views/">Views</a></li>
 <li><a href="/docs/others/infinity_user_affiliation_system/">Infinity User Affiliation System</a></li>
 <li><a href="/docs/others/biu/">Biu</a></li>
 <li><a href="/docs/others/sentry/">Sentry</a></li>
@@ -177,23 +183,29 @@ https://github.com/alex-shpak/hugo-book
 
 <h1 id="configuration">Configuration</h1>
 
-<h2 id="configure">Configure</h2>
+<h2 id="minimal-configuration">Minimal Configuration</h2>
 
 <ol>
-<li>Use default env file
-<code>sh
-mv .env.example.json .env.json
-</code></li>
-<li>Startup your <strong>mysql</strong> instance if you don&rsquo;t have<br />
-Here&rsquo;s a docker example:
-<code>sh
-docker run --name mysql --rm -it -p \&quot;3306:3306\&quot; -v \&quot;${HOME}/{YOUR-MYSQL-PERSISTENCE-DATA-PATH}/mysql:/var/lib/mysql\&quot; -e \&quot;MYSQL_ROOT_PASSWORD={YOUR-MYSQL-ROOT-PASSWORD}\&quot; mysql:latest
-</code></li>
-<li>Start your truck!
-<code>sh 
-go run main.go
-</code></li>
+<li><p>Use default env file</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mv .env.example.json .env.json</code></pre></div></li>
+
+<li><p>Startup your <strong>mysql</strong> instance if you don&rsquo;t have<br />
+Here&rsquo;s a docker example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker run --name mysql --rm -it <span style="color:#ae81ff">\ </span>
+-p <span style="color:#ae81ff">\&#34;</span><span style="color:#ae81ff">3306</span>:3306<span style="color:#ae81ff">\&#34;</span> <span style="color:#ae81ff">\ </span>
+-v <span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/<span style="color:#f92672">{</span>YOUR-MYSQL-PERSISTENCE-DATA-PATH<span style="color:#f92672">}</span>/mysql:/var/lib/mysql<span style="color:#ae81ff">\&#34;</span> <span style="color:#ae81ff">\ </span>
+-e <span style="color:#ae81ff">\&#34;</span>MYSQL_ROOT_PASSWORD<span style="color:#f92672">={</span>YOUR-MYSQL-ROOT-PASSWORD<span style="color:#f92672">}</span><span style="color:#ae81ff">\&#34;</span> <span style="color:#ae81ff">\ </span>
+mysql:latest</code></pre></div></li>
+
+<li><p>Let&rsquo;s start your truck!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">go run main.go</code></pre></div></li>
 </ol>
+
+<h2 id="environment-configuration">Environment Configuration</h2>
+
+<h2 id="environment-file-configuration">Environment File Configuration</h2>
+
+<h2 id="accessing-configuration-values">Accessing Configuration Values</h2>
 </article>
 
       
@@ -221,7 +233,10 @@ go run main.go
 <ul>
 <li><a href="#configuration">Configuration</a>
 <ul>
-<li><a href="#configure">Configure</a></li>
+<li><a href="#minimal-configuration">Minimal Configuration</a></li>
+<li><a href="#environment-configuration">Environment Configuration</a></li>
+<li><a href="#environment-file-configuration">Environment File Configuration</a></li>
+<li><a href="#accessing-configuration-values">Accessing Configuration Values</a></li>
 </ul></li>
 </ul>
 </nav>

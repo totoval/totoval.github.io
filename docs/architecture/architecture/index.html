@@ -97,6 +97,12 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/security/hashing/">Hashing</a></li>
 <li><a href="/docs/security/password_reset/">Password Reset</a></li>
 </ul></li>
+<li><strong>Frontend</strong>
+
+<ul>
+<li><a href="/docs/frontend/localization/">Localization</a></li>
+<li><a href="/docs/frontend/views/">Views</a></li>
+</ul></li>
 <li><strong>Deeper</strong>
 
 <ul>
@@ -118,6 +124,7 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>ORM</strong>
 
 <ul>
+<li><a href="/docs/orm/models/">Models</a></li>
 <li><a href="/docs/orm/model_helpers/">Model Helpers</a></li>
 <li><a href="/docs/orm/pagination/">Pagination</a></li>
 </ul></li>
@@ -130,7 +137,6 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>Other Features</strong>
 
 <ul>
-<li><a href="/docs/basics/views/">Views</a></li>
 <li><a href="/docs/others/infinity_user_affiliation_system/">Infinity User Affiliation System</a></li>
 <li><a href="/docs/others/biu/">Biu</a></li>
 <li><a href="/docs/others/sentry/">Sentry</a></li>
@@ -181,26 +187,69 @@ https://github.com/alex-shpak/hugo-book
 
 <h2 id="totoval">Totoval</h2>
 
-<p>Totoval repo is the main repo which defines the directory mapping of Totoval. It has <strong>8</strong> parts currently.
-* app<br />
-    The <strong>app</strong> is a directory which contains all the component that your project will use.
-    * http<br />
-        * <a href="/docs/basics/controllers/">controllers</a>
-    * models<br />
-    * cache<br />
-    * jobs<br />
-    * events<br />
-    * listeners<br />
-    * notifications<br />
-    * policies<br />
-    * console<br />
-* bootstrap<br />
-* config<br />
-* database<br />
-* resources<br />
-* routes<br />
-* environment file<br />
-* entrypoint</p>
+<p>Totoval repo is the main repo which defines the directory mapping of Totoval. It has <strong>7</strong> parts currently.</p>
+
+<ul>
+<li>app<br />
+The <strong>app</strong> is a directory which contains all the component that your project will use.
+
+<ul>
+<li>http<br />
+
+<ul>
+<li><a href="/docs/basics/controllers/">controllers</a></li>
+<li><a href="/docs/basics/middleware/">middleware</a></li>
+<li><a href="/docs/basics/requests/">requests</a></li>
+</ul></li>
+<li><a href="/docs/orm/models/">models</a></li>
+<li><a href="/docs/deeper/cache/">cache</a></li>
+<li><a href="/docs/deeper/jobs/">jobs</a></li>
+<li><a href="/docs/deeper/events/">events</a></li>
+<li><a href="/docs/deeper/events/">listeners</a></li>
+<li><a href="/docs/security/authorization/">policies</a></li>
+<li>console
+
+<ul>
+<li><a href="/docs/deeper/artisan_console/">commands</a><br /></li>
+<li><a href="/docs/deeper/scheduler/">schedule</a></li>
+</ul></li>
+</ul></li>
+<li>bootstrap<br />
+The <strong>bootstrap</strong> is a directory contains the packages that should be initialized at Totoval app startup.</li>
+<li>config<br />
+The <strong>config</strong> is a directory for placing configurations in which Totoval app will use.</li>
+<li>database<br />
+The <strong>database</strong> is a directory for the database interacting things.
+
+<ul>
+<li><a href="/docs/database/migrations/">migrations</a></li>
+<li>seeds //TODO</li>
+</ul></li>
+<li>resources<br />
+The <strong>resources</strong> is a directory contains Totoval&rsquo;s language packages and views, etc.
+
+<ul>
+<li><a href="/docs/frontend/localization/">lang</a></li>
+<li><a href="/docs/frontend/views/">views</a></li>
+</ul></li>
+<li>routes<br />
+The <strong>routes</strong> is a directory which defines Totoval&rsquo;s request routing.
+
+<ul>
+<li><a href="/docs/basics/routing/">versions</a></li>
+<li><a href="/docs/basics/routing/">groups</a></li>
+</ul></li>
+<li>environment file<br />
+The <strong>environment file</strong> is typically refers to a file named <code>.env.json</code>, which you could defined a set of values in <strong>json</strong> format and it will rewrite the values set at <a href="/docs/getting_started/configuration/">config</a> files</li>
+<li>entrypoint<br />
+
+<ul>
+<li>main.go
+<strong>main.go</strong> is the entrypoint of starting the web application, and it will serve the http server binding the port you&rsquo;ve configured.</li>
+<li>artisan.go
+<strong>artisan.go</strong> is the entrypoint of Totoval&rsquo;s command line, you could use this entrypoint for all the command line interactions defined in Totoval.</li>
+</ul></li>
+</ul>
 
 <h2 id="framework">Framework</h2>
 

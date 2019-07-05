@@ -43,10 +43,6 @@
   </url>
   
   <url>
-    <loc>https://totoval.com/docs/basics/views/</loc>
-  </url>
-  
-  <url>
     <loc>https://totoval.com/docs/database/getting_started/</loc>
   </url>
   
@@ -87,6 +83,14 @@
   </url>
   
   <url>
+    <loc>https://totoval.com/docs/frontend/localization/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/frontend/views/</loc>
+  </url>
+  
+  <url>
     <loc>https://totoval.com/docs/getting_started/configuration/</loc>
   </url>
   
@@ -112,6 +116,10 @@
   
   <url>
     <loc>https://totoval.com/docs/orm/model_helpers/</loc>
+  </url>
+  
+  <url>
+    <loc>https://totoval.com/docs/orm/models/</loc>
   </url>
   
   <url>
