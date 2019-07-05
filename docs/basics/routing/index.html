@@ -182,7 +182,87 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown">
 
 <h1 id="routing">Routing</h1>
-</article>
+
+<h2 id="route">Route</h2>
+
+<p>Route has 3 params.
+* One is the <strong>request method</strong>, which defines what request method could attach this route.<br />
+* One is the <strong>request uri</strong>, which defines what request could attach this route.<br />
+* Another one is the <strong>handlers</strong>, which defines how the program will handle the matched route request. you could define multiple handles for one route.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">group</span>.<span style="color:#a6e22e">POST</span>(<span style="color:#e6db74">&#34;/hello&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>){
+	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusOK</span>, <span style="color:#66d9ef">nil</span>)
+	<span style="color:#66d9ef">return</span>
+})</code></pre></div>
+<h2 id="routegroup">RouteGroup</h2>
+
+<p>Route group is a container, which you could defined a path <code>prefix</code>, and put a bunch of routes in it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">groups</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/route&#34;</span>
+	<span style="color:#e6db74">&#34;totoval/app/http/controllers&#34;</span>
+)
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">AuthGroup</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">LoginController</span>    <span style="color:#a6e22e">controllers</span>.<span style="color:#a6e22e">Login</span>
+	<span style="color:#a6e22e">RegisterController</span> <span style="color:#a6e22e">controllers</span>.<span style="color:#a6e22e">Register</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">ag</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">AuthGroup</span>) <span style="color:#a6e22e">Group</span>(<span style="color:#a6e22e">group</span> <span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">Grouper</span>) {
+	<span style="color:#a6e22e">group</span>.<span style="color:#a6e22e">POST</span>(<span style="color:#e6db74">&#34;/login&#34;</span>, <span style="color:#a6e22e">ag</span>.<span style="color:#a6e22e">LoginController</span>.<span style="color:#a6e22e">Login</span>)
+	<span style="color:#a6e22e">group</span>.<span style="color:#a6e22e">POST</span>(<span style="color:#e6db74">&#34;/register&#34;</span>, <span style="color:#a6e22e">ag</span>.<span style="color:#a6e22e">RegisterController</span>.<span style="color:#a6e22e">Register</span>)
+}</code></pre></div>
+<h2 id="version">Version</h2>
+
+<p>Version is a group that contains <code>Auth</code> and <code>NoAuth</code> routes.</p>
+
+<h3 id="auth">Auth</h3>
+
+<p>Auth is a route group that specify the routes in it will be <strong>under authenticated</strong>, which means user in this app should login before request.</p>
+
+<h3 id="noauth">NoAuth</h3>
+
+<p>NoAuth is a group that specify the routes is in <strong>public access</strong>, which means anyone could request data from it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">versions</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/route&#34;</span>
+	<span style="color:#e6db74">&#34;totoval/routes/groups&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewV1</span>(<span style="color:#a6e22e">engine</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Engine</span>) {
+	<span style="color:#a6e22e">ver</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">NewVersion</span>(<span style="color:#a6e22e">engine</span>, <span style="color:#e6db74">&#34;v1&#34;</span>)
+
+	<span style="color:#75715e">// auth routes
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">ver</span>.<span style="color:#a6e22e">Auth</span>(<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">grp</span> <span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">Grouper</span>) {
+		<span style="color:#a6e22e">grp</span>.<span style="color:#a6e22e">AddGroup</span>(<span style="color:#e6db74">&#34;/user&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">groups</span>.<span style="color:#a6e22e">UserGroup</span>{})
+	})
+
+	<span style="color:#75715e">// no auth routes
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">ver</span>.<span style="color:#a6e22e">NoAuth</span>(<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">grp</span> <span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">Grouper</span>) {
+		<span style="color:#a6e22e">grp</span>.<span style="color:#a6e22e">AddGroup</span>(<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">groups</span>.<span style="color:#a6e22e">AuthGroup</span>{})
+		<span style="color:#a6e22e">grp</span>.<span style="color:#a6e22e">AddGroup</span>(<span style="color:#e6db74">&#34;/user-affiliation&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">groups</span>.<span style="color:#a6e22e">UserAffiliationGroup</span>{})
+	})
+}</code></pre></div>
+<h2 id="provider">Provider</h2>
+
+<p>Provider is a place to switch Totoval&rsquo;s route version will be use.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">routes</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/route&#34;</span>
+	<span style="color:#e6db74">&#34;totoval/routes/versions&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Register</span>(<span style="color:#a6e22e">router</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Engine</span>) {
+	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">Bind</span>()
+
+	<span style="color:#a6e22e">versions</span>.<span style="color:#a6e22e">NewV1</span>(<span style="color:#a6e22e">router</span>)
+}</code></pre></div></article>
 
       
 <div class="book-footer justify-between">
@@ -207,7 +287,17 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#routing">Routing</a></li>
+<li><a href="#routing">Routing</a>
+<ul>
+<li><a href="#route">Route</a></li>
+<li><a href="#routegroup">RouteGroup</a></li>
+<li><a href="#version">Version</a>
+<ul>
+<li><a href="#auth">Auth</a></li>
+<li><a href="#noauth">NoAuth</a></li>
+</ul></li>
+<li><a href="#provider">Provider</a></li>
+</ul></li>
 </ul>
 </nav>
   </aside>
