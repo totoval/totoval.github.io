@@ -176,6 +176,35 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown">
 
 <h1 id="architecture">Architecture</h1>
+
+<p>Totoval has two separated parts, <strong>Totoval</strong> repo and <strong>Totoval Framework</strong> repo.</p>
+
+<h2 id="totoval">Totoval</h2>
+
+<p>Totoval repo is the main repo which defines the directory mapping of Totoval. It has <strong>8</strong> parts currently.
+* app<br />
+    The <strong>app</strong> is a directory which contains all the component that your project will use.
+    * http<br />
+        * <a href="/docs/basics/controllers/">controllers</a>
+    * models<br />
+    * cache<br />
+    * jobs<br />
+    * events<br />
+    * listeners<br />
+    * notifications<br />
+    * policies<br />
+    * console<br />
+* bootstrap<br />
+* config<br />
+* database<br />
+* resources<br />
+* routes<br />
+* environment file<br />
+* entrypoint</p>
+
+<h2 id="framework">Framework</h2>
+
+<p>Totoval Framework repo is a set of utils that Totoval would use, you only need to import it at <strong>go.mod</strong> file in Totoval main repo</p>
 </article>
 
       
@@ -201,7 +230,11 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#architecture">Architecture</a></li>
+<li><a href="#architecture">Architecture</a>
+<ul>
+<li><a href="#totoval">Totoval</a></li>
+<li><a href="#framework">Framework</a></li>
+</ul></li>
 </ul>
 </nav>
   </aside>

@@ -16,7 +16,18 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://totoval.com/docs/architecture/architecture/</guid>
-      <description> Architecture </description>
+      <description>Architecture Totoval has two separated parts, Totoval repo and Totoval Framework repo.
+Totoval Totoval repo is the main repo which defines the directory mapping of Totoval. It has 8 parts currently. * app
+The app is a directory which contains all the component that your project will use. * http
+* controllers * models
+* cache
+* jobs
+* events
+* listeners
+* notifications
+* policies
+* console
+* bootstrap</description>
     </item>
     
     <item>
@@ -206,7 +217,8 @@ version: &amp;#39;3&amp;#39; services: nsqlookupd: image: nsqio/nsq:v1.1.0 conta
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://totoval.com/docs/getting_started/configuration/</guid>
-      <description> Configuration </description>
+      <description> Configuration Configure  Use default env file sh mv .env.example.json .env.json  Startup your mysql instance if you don&amp;rsquo;t have
+Here&amp;rsquo;s a docker example: sh docker run --name mysql --rm -it -p \&amp;quot;3306:3306\&amp;quot; -v \&amp;quot;${HOME}/{YOUR-MYSQL-PERSISTENCE-DATA-PATH}/mysql:/var/lib/mysql\&amp;quot; -e \&amp;quot;MYSQL_ROOT_PASSWORD={YOUR-MYSQL-ROOT-PASSWORD}\&amp;quot; mysql:latest  Start your truck! sh go run main.go   </description>
     </item>
     
     <item>
@@ -215,7 +227,7 @@ version: &amp;#39;3&amp;#39; services: nsqlookupd: image: nsqio/nsq:v1.1.0 conta
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://totoval.com/docs/getting_started/installation/</guid>
-      <description> Installation Server Requirements </description>
+      <description> Installation Server Requirements  System: linux, macos, windows, arm&amp;hellip; Cpu: 1 Memory: 128MB Disk: 100MB  Install  Download sh git clone git@github.com:totoval/totoval.git ./YOUR-PROJECT-NAME  Remove .git and reinit it sh cd ./YOUR-PROJECT-NAME rm -rf .git git init   </description>
     </item>
     
     <item>

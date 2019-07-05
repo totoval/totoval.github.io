@@ -176,6 +176,24 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown">
 
 <h1 id="configuration">Configuration</h1>
+
+<h2 id="configure">Configure</h2>
+
+<ol>
+<li>Use default env file
+<code>sh
+mv .env.example.json .env.json
+</code></li>
+<li>Startup your <strong>mysql</strong> instance if you don&rsquo;t have<br />
+Here&rsquo;s a docker example:
+<code>sh
+docker run --name mysql --rm -it -p \&quot;3306:3306\&quot; -v \&quot;${HOME}/{YOUR-MYSQL-PERSISTENCE-DATA-PATH}/mysql:/var/lib/mysql\&quot; -e \&quot;MYSQL_ROOT_PASSWORD={YOUR-MYSQL-ROOT-PASSWORD}\&quot; mysql:latest
+</code></li>
+<li>Start your truck!
+<code>sh 
+go run main.go
+</code></li>
+</ol>
 </article>
 
       
@@ -201,7 +219,10 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#configuration">Configuration</a></li>
+<li><a href="#configuration">Configuration</a>
+<ul>
+<li><a href="#configure">Configure</a></li>
+</ul></li>
 </ul>
 </nav>
   </aside>
