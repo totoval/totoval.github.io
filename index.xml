@@ -70,8 +70,8 @@ module github.com/totoval/framework require ( cloud.google.com/go v0.36.0 // ind
       
       <guid>https://totoval.com/docs/basics/middleware/</guid>
       <description>Middleware Middleware is also a route handler.
-&amp;gt; Middleware will proccess the request before controller, so it cannot be the last handler in a route.
-package middleware import ( &amp;#34;github.com/totoval/framework/helpers/log&amp;#34; &amp;#34;github.com/totoval/framework/logs&amp;#34; &amp;#34;github.com/gin-gonic/gin&amp;#34; &amp;#34;github.com/totoval/framework/helpers/zone&amp;#34; ) func Example() gin.HandlerFunc { return func(c *gin.Context) { t := zone.Now() // Set example variable 	c.Set(&amp;#34;example&amp;#34;, &amp;#34;12345&amp;#34;) // before request  c.Next() // after request 	latency := zone.Since(t) log.Info(&amp;#34;latency&amp;#34;, logs.Field{&amp;#34;latency&amp;#34;: latency}) // access the status we are sending 	status := c.</description>
+ Middleware will proccess the request before controller, so it cannot be the last handler in a route.
+ package middleware import ( &amp;#34;github.com/totoval/framework/helpers/log&amp;#34; &amp;#34;github.com/totoval/framework/logs&amp;#34; &amp;#34;github.com/gin-gonic/gin&amp;#34; &amp;#34;github.com/totoval/framework/helpers/zone&amp;#34; ) func Example() gin.HandlerFunc { return func(c *gin.Context) { t := zone.Now() // Set example variable 	c.Set(&amp;#34;example&amp;#34;, &amp;#34;12345&amp;#34;) // before request  c.Next() // after request 	latency := zone.Since(t) log.Info(&amp;#34;latency&amp;#34;, logs.Field{&amp;#34;latency&amp;#34;: latency}) // access the status we are sending 	status := c.</description>
     </item>
     
     <item>
