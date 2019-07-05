@@ -42,7 +42,9 @@ module github.com/totoval/framework require ( cloud.google.com/go v0.36.0 // ind
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://totoval.com/docs/basics/controllers/</guid>
-      <description> Controllers </description>
+      <description>Controllers Controller is the last handle in one route. It process the request and return the processed result out.
+A Controller must embedded with BaseController defined in github.com/totoval/framework/http/controller.
+package controllers import ( &amp;#34;net/http&amp;#34; &amp;#34;github.com/gin-gonic/gin&amp;#34; &amp;#34;github.com/totoval/framework/helpers/m&amp;#34; &amp;#34;github.com/totoval/framework/helpers/ptr&amp;#34; &amp;#34;github.com/totoval/framework/http/controller&amp;#34; &amp;#34;github.com/totoval/framework/model&amp;#34; &amp;#34;totoval/app/models&amp;#34; ) type User struct { controller.BaseController } func (u *User) Info(c *gin.Context) { if u.Scan(c) { return } user := u.User().Value().(*models.User) user.Password = ptr.String(&amp;#34;&amp;#34;) // remove password value for response rendering 	c.</description>
     </item>
     
     <item>

@@ -182,7 +182,37 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown">
 
 <h1 id="controllers">Controllers</h1>
-</article>
+
+<p>Controller is the last handle in one route. It process the request and return the processed result out.<br />
+A Controller must embedded with <code>BaseController</code> defined in <code>github.com/totoval/framework/http/controller</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">controllers</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;net/http&#34;</span>
+
+	<span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/helpers/m&#34;</span>
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/helpers/ptr&#34;</span>
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/http/controller&#34;</span>
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/model&#34;</span>
+	<span style="color:#e6db74">&#34;totoval/app/models&#34;</span>
+)
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">BaseController</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Info</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Scan</span>(<span style="color:#a6e22e">c</span>) {
+		<span style="color:#66d9ef">return</span>
+	}
+	<span style="color:#a6e22e">user</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">User</span>().<span style="color:#a6e22e">Value</span>().(<span style="color:#f92672">*</span><span style="color:#a6e22e">models</span>.<span style="color:#a6e22e">User</span>)
+
+	<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">Password</span> = <span style="color:#a6e22e">ptr</span>.<span style="color:#a6e22e">String</span>(<span style="color:#e6db74">&#34;&#34;</span>) <span style="color:#75715e">// remove password value for response rendering
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusOK</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;data&#34;</span>: <span style="color:#a6e22e">user</span>})
+	<span style="color:#66d9ef">return</span>
+}</code></pre></div></article>
 
       
 <div class="book-footer justify-between">
