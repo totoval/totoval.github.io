@@ -31,7 +31,7 @@ The app is a directory which contains all the component that your project will u
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://totoval.com/docs/architecture/embedded_modules/</guid>
-      <description>Embedded Modules Totoval refers to (https://github.com/totoval/totoval/blob/master/go.mod)[https://github.com/totoval/totoval/blob/master/go.mod]
+      <description>Embedded Modules Totoval refers to https://github.com/totoval/totoval/blob/master/go.mod
 module totoval require ( github.com/gin-gonic/gin v1.4.0 github.com/golang/protobuf v1.3.1 github.com/jinzhu/gorm v1.9.2 github.com/totoval/framework v0.8.1-hotfix-2 github.com/urfave/cli v1.20.0 ) Framework refers to https://github.com/totoval/framework/blob/master/go.mod
 module github.com/totoval/framework require ( cloud.google.com/go v0.36.0 // indirect 	github.com/davecgh/go-spew v1.1.1 github.com/denisenkom/go-mssqldb v0.0.0-20190204142019-df6d76eb9289 // indirect 	github.com/erikstmartin/go-testdb v0.0.0-20160219214506-8d10e4a1bae5 // indirect 	github.com/fatih/color v1.7.0 github.com/getsentry/raven-go v0.2.0 github.com/gin-contrib/sentry v0.0.0-20190528141903-48a399dfd39f github.com/gin-gonic/gin v1.4.0 github.com/go-playground/locales v0.12.1 github.com/go-playground/universal-translator v0.16.0 github.com/go-redis/redis v6.15.2+incompatible github.com/go-sql-driver/mysql v1.4.1 // indirect 	github.com/gofrs/uuid v3.2.0+incompatible // indirect 	github.</description>
     </item>
