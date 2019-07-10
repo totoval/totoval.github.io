@@ -191,14 +191,49 @@ while minio release my be released as often as new feature has been added. Minor
 <strong>never</strong> contain breaking changes.</p>
 
 <p>When referencing the Totoval framework from your application, you should always use the version
-which Totoval is used. for example, Totoval&rsquo;s version is <code>v0.8.1-hotfix-4</code>, Totoval framework&rsquo;s version
-should also be <code>v0.8.1-hotfix-4</code>.</p>
+which Totoval is used. for example, Totoval&rsquo;s version is <code>v0.9.0</code>, Totoval framework&rsquo;s version
+should also be <code>v0.9.0</code>.</p>
+
+<h2 id="totoval-v0-9-x">Totoval v0.9.x</h2>
+
+<p>Totoval <code>v0.9.x</code> upgrades the framework&rsquo;s underlying Totoval components to the <code>v0.9.x</code> series.</p>
+
+<h3 id="compare">Compare</h3>
+
+<p><a href="https://github.com/totoval/totoval/compare/v0.8.1-hotfix-3...v0.9.0">https://github.com/totoval/totoval/compare/v0.8.1-hotfix-3...v0.9.0</a></p>
+
+<h3 id="migrate-to-v0-9-x">Migrate to v0.9.x</h3>
+
+<h4 id="1-code-replace">1. Code Replace</h4>
+
+<ul>
+<li><p>global replace:</p>
+
+<ul>
+<li><code>gin.HandlerFunc</code> =&gt; <code>request.HandlerFunc</code></li>
+<li><code>gin.Context</code> =&gt; <code>request.Context</code></li>
+<li><code>gin.H</code> =&gt; <code>toto.V</code></li>
+<li><code>logs.Field</code> =&gt; <code>toto.V</code></li>
+</ul></li>
+
+<li><p>model replace:</p>
+
+<ul>
+<li><code>gin.Context</code> =&gt; <code>model.Context</code></li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>the <code>request</code> package is &ldquo;github.com/totoval/framework/request&rdquo;<br />
+the <code>toto</code> package is &ldquo;github.com/totoval/framework/helpers/toto&rdquo;
+the <code>model</code> package is &ldquo;github.com/totoval/framework/model&rdquo;</p>
+</blockquote>
 
 <h2 id="totoval-v0-8-x">Totoval v0.8.x</h2>
 
 <p>Totoval <code>v0.8.x</code> upgrades the framework&rsquo;s underlying Totoval components to the <code>v0.8.x</code> series.</p>
 
-<h3 id="compare">Compare</h3>
+<h3 id="compare-1">Compare</h3>
 
 <p><a href="https://github.com/totoval/totoval/compare/v0.7.11...v0.8.0#diff-57e6facd16b7a7d9e9b25513649387ffL31">https://github.com/totoval/totoval/compare/v0.7.11...v0.8.0#diff-57e6facd16b7a7d9e9b25513649387ffL31</a></p>
 
@@ -396,9 +431,17 @@ should also be <code>v0.8.1-hotfix-4</code>.</p>
 <li><a href="#release-notes">Release Notes</a>
 <ul>
 <li><a href="#versioning-scheme">Versioning Scheme</a></li>
-<li><a href="#totoval-v0-8-x">Totoval v0.8.x</a>
+<li><a href="#totoval-v0-9-x">Totoval v0.9.x</a>
 <ul>
 <li><a href="#compare">Compare</a></li>
+<li><a href="#migrate-to-v0-9-x">Migrate to v0.9.x</a>
+<ul>
+<li><a href="#1-code-replace">1. Code Replace</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#totoval-v0-8-x">Totoval v0.8.x</a>
+<ul>
+<li><a href="#compare-1">Compare</a></li>
 <li><a href="#migrate-to-v0-8-x">Migrate to v0.8.x</a>
 <ul>
 <li><a href="#1-configuration-config-auth-go">1. Configuration <code>config/auth.go</code></a></li>
