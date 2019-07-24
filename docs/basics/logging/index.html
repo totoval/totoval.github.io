@@ -183,7 +183,24 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown">
 
 <h1 id="logging">Logging</h1>
-</article>
+
+<p>Totoval provide an easy use logging helpers with log level supported.</p>
+
+<h2 id="packages">Packages</h2>
+
+<ul>
+<li>github.com/totoval/framework/helpers/log</li>
+<li>github.com/totoval/framework/helpers/toto</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Info</span>(<span style="color:#e6db74">&#34;this is the message&#34;</span>, <span style="color:#a6e22e">toto</span>.<span style="color:#a6e22e">V</span>{<span style="color:#e6db74">&#34;key1&#34;</span>: <span style="color:#a6e22e">value1</span>, <span style="color:#e6db74">&#34;key2&#34;</span>: <span style="color:#a6e22e">value2</span>})
+    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Warn</span>(<span style="color:#e6db74">&#34;this is the message&#34;</span>, <span style="color:#a6e22e">toto</span>.<span style="color:#a6e22e">V</span>{<span style="color:#e6db74">&#34;key1&#34;</span>: <span style="color:#a6e22e">value1</span>, <span style="color:#e6db74">&#34;key2&#34;</span>: <span style="color:#a6e22e">value2</span>})
+    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#e6db74">&#34;this is the message&#34;</span>, <span style="color:#a6e22e">toto</span>.<span style="color:#a6e22e">V</span>{<span style="color:#e6db74">&#34;key1&#34;</span>: <span style="color:#a6e22e">value1</span>, <span style="color:#e6db74">&#34;key2&#34;</span>: <span style="color:#a6e22e">value2</span>})
+    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Debug</span>(<span style="color:#e6db74">&#34;this is the message&#34;</span>, <span style="color:#a6e22e">toto</span>.<span style="color:#a6e22e">V</span>{<span style="color:#e6db74">&#34;key1&#34;</span>: <span style="color:#a6e22e">value1</span>, <span style="color:#e6db74">&#34;key2&#34;</span>: <span style="color:#a6e22e">value2</span>})
+    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Panic</span>(<span style="color:#e6db74">&#34;this is the message&#34;</span>, <span style="color:#a6e22e">toto</span>.<span style="color:#a6e22e">V</span>{<span style="color:#e6db74">&#34;key1&#34;</span>: <span style="color:#a6e22e">value1</span>, <span style="color:#e6db74">&#34;key2&#34;</span>: <span style="color:#a6e22e">value2</span>})
+    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Trace</span>(<span style="color:#e6db74">&#34;this is the message&#34;</span>, <span style="color:#a6e22e">toto</span>.<span style="color:#a6e22e">V</span>{<span style="color:#e6db74">&#34;key1&#34;</span>: <span style="color:#a6e22e">value1</span>, <span style="color:#e6db74">&#34;key2&#34;</span>: <span style="color:#a6e22e">value2</span>})
+    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;this is the error message&#34;</span>), <span style="color:#a6e22e">toto</span>.<span style="color:#a6e22e">V</span>{<span style="color:#e6db74">&#34;key1&#34;</span>: <span style="color:#a6e22e">value1</span>, <span style="color:#e6db74">&#34;key2&#34;</span>: <span style="color:#a6e22e">value2</span>})</code></pre></div></article>
 
       
 <div class="book-footer justify-between">
@@ -208,7 +225,11 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#logging">Logging</a></li>
+<li><a href="#logging">Logging</a>
+<ul>
+<li><a href="#packages">Packages</a></li>
+<li><a href="#usage">Usage</a></li>
+</ul></li>
 </ul>
 </nav>
   </aside>

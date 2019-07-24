@@ -61,7 +61,8 @@ package controllers import ( &amp;#34;net/http&amp;#34; &amp;#34;github.com/gin-
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://totoval.com/docs/basics/logging/</guid>
-      <description> Logging </description>
+      <description>Logging Totoval provide an easy use logging helpers with log level supported.
+Packages  github.com/totoval/framework/helpers/log github.com/totoval/framework/helpers/toto  Usage log.Info(&amp;#34;this is the message&amp;#34;, toto.V{&amp;#34;key1&amp;#34;: value1, &amp;#34;key2&amp;#34;: value2}) log.Warn(&amp;#34;this is the message&amp;#34;, toto.V{&amp;#34;key1&amp;#34;: value1, &amp;#34;key2&amp;#34;: value2}) log.Fatal(&amp;#34;this is the message&amp;#34;, toto.V{&amp;#34;key1&amp;#34;: value1, &amp;#34;key2&amp;#34;: value2}) log.Debug(&amp;#34;this is the message&amp;#34;, toto.V{&amp;#34;key1&amp;#34;: value1, &amp;#34;key2&amp;#34;: value2}) log.Panic(&amp;#34;this is the message&amp;#34;, toto.V{&amp;#34;key1&amp;#34;: value1, &amp;#34;key2&amp;#34;: value2}) log.Trace(&amp;#34;this is the message&amp;#34;, toto.V{&amp;#34;key1&amp;#34;: value1, &amp;#34;key2&amp;#34;: value2}) log.Error(errors.New(&amp;#34;this is the error message&amp;#34;), toto.</description>
     </item>
     
     <item>
@@ -91,7 +92,7 @@ Requests package requests type UserLogin struct { Email string `json:&amp;#34;em
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://totoval.com/docs/basics/responses/</guid>
-      <description> Responses </description>
+      <description>Responses Totoval is a Gin basing api web-framework, the response format is compatible with Gin, more at docs.</description>
     </item>
     
     <item>
