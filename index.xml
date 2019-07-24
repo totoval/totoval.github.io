@@ -115,7 +115,11 @@ group.POST(&amp;#34;/hello&amp;#34;, func(c *gin.Context){ c.JSON(http.StatusOK,
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://totoval.com/docs/basics/validation/</guid>
-      <description> Validation </description>
+      <description>Validation Totoval validation uses gopkg.in/go-playground/validator.v9.
+Request Validation Request validation file should be placed at app/http/requests folder. And used at app/http/controllers.
+Here&amp;rsquo;s a request validation file example for validate user login request:
+package requests type UserLogin struct { Email string `json:&amp;#34;email&amp;#34; binding:&amp;#34;required,email&amp;#34;` Password string `json:&amp;#34;password&amp;#34; binding:&amp;#34;required,min=8,max=24&amp;#34;` } Using at controllers:
+func (l *Login) Login(c *request.Context) { // validate and assign requestData 	var requestData requests.UserLogin if !l.Validate(c, &amp;amp;requestData, true) { return } .</description>
     </item>
     
     <item>

@@ -183,6 +183,45 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown">
 
 <h1 id="validation">Validation</h1>
+
+<p>Totoval validation uses <code>gopkg.in/go-playground/validator.v9</code>.</p>
+
+<h2 id="request-validation">Request Validation</h2>
+
+<p>Request validation file should be placed at <code>app/http/requests</code> folder. And used at <code>app/http/controllers</code>.<br />
+Here&rsquo;s a request validation file example for validate user login request:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">requests</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">UserLogin</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">Email</span>    <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;email&#34; binding:&#34;required,email&#34;`</span>
+	<span style="color:#a6e22e">Password</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;password&#34; binding:&#34;required,min=8,max=24&#34;`</span>
+}</code></pre></div>
+<p>Using at controllers:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">l</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Login</span>) <span style="color:#a6e22e">Login</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">Context</span>) {
+	<span style="color:#75715e">// validate and assign requestData
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">requestData</span> <span style="color:#a6e22e">requests</span>.<span style="color:#a6e22e">UserLogin</span>
+	<span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">l</span>.<span style="color:#a6e22e">Validate</span>(<span style="color:#a6e22e">c</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">requestData</span>, <span style="color:#66d9ef">true</span>) {
+		<span style="color:#66d9ef">return</span>
+	}
+	
+    <span style="color:#f92672">...</span>
+	<span style="color:#f92672">...</span>
+}</code></pre></div>
+<p>All the controller&rsquo;s should embedded with <code>BaseController</code>, and <code>BaseController</code> has defined a <code>Validate</code> function, by using <code>Validate</code> function, Totoval use the request validation struct to validate the request data.<br />
+If this function returns false, then you should directly return in the controller, and that will cause a http <code>422</code> error with the error message.</p>
+
+<h2 id="model-validation">Model Validation</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">ID</span>        <span style="color:#f92672">*</span><span style="color:#66d9ef">uint</span>      <span style="color:#e6db74">`gorm:&#34;column:user_id;primary_key;auto_increment&#34; validate:&#34;omitempty&#34;`</span>
+	<span style="color:#a6e22e">Name</span>      <span style="color:#f92672">*</span><span style="color:#66d9ef">string</span>    <span style="color:#e6db74">`gorm:&#34;column:user_name;type:varchar(100)&#34; validate:&#34;required&#34;`</span>
+	<span style="color:#a6e22e">Email</span>     <span style="color:#f92672">*</span><span style="color:#66d9ef">string</span>    <span style="color:#e6db74">`gorm:&#34;column:user_email;type:varchar(100);unique_index;not null&#34; validate:&#34;required&#34;`</span>
+	<span style="color:#a6e22e">Password</span>  <span style="color:#f92672">*</span><span style="color:#66d9ef">string</span>    <span style="color:#e6db74">`gorm:&#34;column:user_password;type:varchar(100);not null&#34; validate:&#34;required&#34;`</span>
+	<span style="color:#a6e22e">CreatedAt</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">zone</span>.<span style="color:#a6e22e">Time</span> <span style="color:#e6db74">`gorm:&#34;column:user_created_at&#34;`</span>
+	<span style="color:#a6e22e">UpdatedAt</span> <span style="color:#a6e22e">zone</span>.<span style="color:#a6e22e">Time</span>  <span style="color:#e6db74">`gorm:&#34;column:user_updated_at&#34;`</span>
+	<span style="color:#a6e22e">DeletedAt</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">zone</span>.<span style="color:#a6e22e">Time</span> <span style="color:#e6db74">`gorm:&#34;column:user_deleted_at&#34;`</span>
+	<span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">BaseModel</span>
+}</code></pre></div>
+<p>When using helper function <code>m.H().Create()</code> and <code>m.H().Save()</code> in package <code>github.com/totoval/framework/helpers/m</code>, the <code>structData</code> passed into the function will be validated using the struct&rsquo;s <code>validate</code> tag.</p>
 </article>
 
       
@@ -208,7 +247,11 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#validation">Validation</a></li>
+<li><a href="#validation">Validation</a>
+<ul>
+<li><a href="#request-validation">Request Validation</a></li>
+<li><a href="#model-validation">Model Validation</a></li>
+</ul></li>
 </ul>
 </nav>
   </aside>
