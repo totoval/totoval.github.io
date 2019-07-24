@@ -248,7 +248,7 @@ go run main.go  Environment File Configuration Here&amp;rsquo;s an example of .e
       <guid>https://totoval.com/docs/getting_started/installation/</guid>
       <description> Installation Server Requirements  System: linux, macos, windows, arm&amp;hellip; Cpu: 1 Memory: 128MB Disk: 100MB  Install  Download
 git clone git@github.com:totoval/totoval.git ./YOUR-PROJECT-NAME Remove .git and reinit it
-cd ./YOUR-PROJECT-NAME rm -rf .git git init  </description>
+cd ./YOUR-PROJECT-NAME rm -rf .git git init  Use As Template  Github Fork https://github.com/totoval/totoval Click Use this template Button at here  </description>
     </item>
     
     <item>
