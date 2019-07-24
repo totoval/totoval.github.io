@@ -308,6 +308,16 @@ When referencing the Totoval framework from your application, you should always 
     
     <item>
       <title></title>
+      <link>https://totoval.com/docs/orm/mutators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://totoval.com/docs/orm/mutators/</guid>
+      <description>Mutators Introduction Accessors and mutators allow you to format Eloquent attribute values when you retrieve or set them on model instances. For example, you may want to get user information from database and response it to the browser, but you don&amp;rsquo;t want users&amp;rsquo; password field exposed out.
+Accessors &amp;amp; Mutators Defining An Accessor To define an accessor, create a GetFooAttribute method on your model where Foo is the &amp;ldquo;camel&amp;rdquo; cased name of the field in the model you wish to access.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://totoval.com/docs/orm/pagination/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
