@@ -217,10 +217,11 @@ https://github.com/alex-shpak/hugo-book
 		<span style="color:#a6e22e">Nickname</span>: <span style="color:#e6db74">&#34;mynick&#34;</span>,
 	}
 	<span style="color:#a6e22e">userModified</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{
-		<span style="color:#a6e22e">Password</span>: <span style="color:#e6db74">&#34;passw0rd123&#34;</span>,
-		<span style="color:#a6e22e">Nickname</span>: <span style="color:#a6e22e">null</span>.<span style="color:#a6e22e">String</span>(),
-	}
-	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">H</span>().<span style="color:#a6e22e">Save</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">userModified</span>, ); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span>{
+		<span style="color:#a6e22e">Password</span>: <span style="color:#e6db74">&#34;passw0rd123&#34;</span>, <span style="color:#75715e">// modify password to `passw0rd123`
+</span><span style="color:#75715e"></span>	}
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">H</span>().<span style="color:#a6e22e">Save</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">userModified</span>, <span style="color:#a6e22e">User</span>{
+		<span style="color:#a6e22e">Nickname</span>: <span style="color:#a6e22e">null</span>.<span style="color:#a6e22e">String</span>(), <span style="color:#75715e">// set nickname to null
+</span><span style="color:#75715e"></span>	}); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span>{
 		panic(<span style="color:#a6e22e">err</span>)
 	}
 	
@@ -257,8 +258,8 @@ https://github.com/alex-shpak/hugo-book
   
   <div>
     
-    <a href="https://github.com/totoval/docs/commit/6e765168fdebf18ee686ab1485741a2f37c2888b" title='Last modified May 31, 2019 by Toby Yan' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> May 31, 2019
+    <a href="https://github.com/totoval/docs/commit/ee46fa0cac6625aed44f9e03ba94a7f5f14875c3" title='Last modified Jul 29, 2019 by Toby Yan' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> Jul 29, 2019
     </a>
   </div>
   
