@@ -183,7 +183,9 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown">
 
 <h1 id="query-builder">Query Builder</h1>
-</article>
+
+<h2 id="q">Q</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">H</span>().<span style="color:#a6e22e">Q</span>([]<span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">Filter</span>{{<span style="color:#a6e22e">Key</span>: <span style="color:#e6db74">&#34;username&#34;</span>, <span style="color:#a6e22e">Op</span>: <span style="color:#e6db74">&#34;=&#34;</span>, <span style="color:#a6e22e">Val</span>: <span style="color:#a6e22e">username</span>}}, []<span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">Sort</span>{}, <span style="color:#a6e22e">limit</span>, <span style="color:#a6e22e">withTrashed</span>).<span style="color:#a6e22e">Select</span>(<span style="color:#e6db74">&#34;*&#34;</span>)</code></pre></div></article>
 
       
 <div class="book-footer justify-between">
@@ -208,7 +210,10 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#query-builder">Query Builder</a></li>
+<li><a href="#query-builder">Query Builder</a>
+<ul>
+<li><a href="#q">Q</a></li>
+</ul></li>
 </ul>
 </nav>
   </aside>

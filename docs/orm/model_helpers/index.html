@@ -183,7 +183,74 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown">
 
 <h1 id="model-helpers">Model Helpers</h1>
-</article>
+
+<h2 id="create">Create</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/helpers/m&#34;</span>
+    <span style="color:#e6db74">&#34;fmt&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Create</span>(){
+	<span style="color:#a6e22e">user</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{
+		<span style="color:#a6e22e">Username</span>: <span style="color:#a6e22e">ptr</span>.<span style="color:#a6e22e">String</span>(<span style="color:#e6db74">&#34;totoval&#34;</span>),
+		<span style="color:#a6e22e">Password</span>: <span style="color:#a6e22e">ptr</span>.<span style="color:#a6e22e">String</span>(<span style="color:#e6db74">&#34;passw0rd&#34;</span>),
+	}
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">H</span>().<span style="color:#a6e22e">Create</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">user</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span>{
+		panic(<span style="color:#a6e22e">err</span>)
+	}
+	
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">user</span>)
+}</code></pre></div>
+<h2 id="save">Save</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/helpers/m&#34;</span>
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/helpers/ptr&#34;</span>
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/model/types/null&#34;</span>
+    <span style="color:#e6db74">&#34;fmt&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Save</span>(){
+	<span style="color:#a6e22e">user</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{
+		<span style="color:#a6e22e">Id</span>: <span style="color:#ae81ff">1</span>,
+		<span style="color:#a6e22e">Username</span>: <span style="color:#e6db74">&#34;totoval&#34;</span>,
+		<span style="color:#a6e22e">Password</span>: <span style="color:#e6db74">&#34;passw0rd&#34;</span>,
+		<span style="color:#a6e22e">Nickname</span>: <span style="color:#e6db74">&#34;mynick&#34;</span>,
+	}
+	<span style="color:#a6e22e">userModified</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{
+		<span style="color:#a6e22e">Password</span>: <span style="color:#e6db74">&#34;passw0rd123&#34;</span>,
+		<span style="color:#a6e22e">Nickname</span>: <span style="color:#a6e22e">null</span>.<span style="color:#a6e22e">String</span>(),
+	}
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">H</span>().<span style="color:#a6e22e">Save</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">userModified</span>, ); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span>{
+		panic(<span style="color:#a6e22e">err</span>)
+	}
+	
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">user</span>)
+	<span style="color:#75715e">// the user will be saved as User{Id: 1, Username: &#34;totoval&#34;, Password: &#34;passw0rd123&#34;, Nickname: null}
+</span><span style="color:#75715e"></span>}</code></pre></div>
+<h2 id="query">Query</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;github.com/totoval/framework/helpers/m&#34;</span>
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Query</span>(){
+	<span style="color:#a6e22e">user</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{
+		<span style="color:#a6e22e">Id</span>: <span style="color:#ae81ff">1</span>,
+	}
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">H</span>().<span style="color:#a6e22e">First</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">user</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span>{
+		panic(<span style="color:#a6e22e">err</span>)
+	}
+	
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">user</span>)
+}</code></pre></div>
+<h2 id="delete">Delete</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">H</span>().<span style="color:#a6e22e">Delete</span>(<span style="color:#a6e22e">user</span>, <span style="color:#66d9ef">false</span>)
+<span style="color:#e6db74">````</span>
+
+<span style="color:#960050;background-color:#1e0010">##</span> <span style="color:#a6e22e">Restore</span>
+
+<span style="color:#e6db74">``</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#66d9ef">go</span>
+<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">H</span>().<span style="color:#a6e22e">Restore</span>(<span style="color:#a6e22e">user</span>)</code></pre></div></article>
 
       
 <div class="book-footer justify-between">
@@ -208,7 +275,13 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#model-helpers">Model Helpers</a></li>
+<li><a href="#model-helpers">Model Helpers</a>
+<ul>
+<li><a href="#create">Create</a></li>
+<li><a href="#save">Save</a></li>
+<li><a href="#query">Query</a></li>
+<li><a href="#delete">Delete</a></li>
+</ul></li>
 </ul>
 </nav>
   </aside>
